@@ -1,21 +1,29 @@
 import React, { useState } from 'react';
 import Ticket from './Ticket';
 
-const Sidebar = ({}) => {
+import { useDrop } from 'react-dnd';
+import { ItemTypes } from '../Utils/items';
 
-  const [tickets, setTickets] = useState([
-    {
-      description: "Free Day - Youtube, Games, Movies, Articles, Books",
-    },
-    {
-      description: "Architecture - Wikipedia, Articles, Videos",
-    }
-  ]);
+const Sidebar = ({tickets, changeTicketTag, deleteTicket}) => {
+
+  const [{isOver}, drop] = useDrop({
+    accept: ItemTypes.TICKET,
+    drop: (item, monitor) => changeTicketTag(item.id, "QUE"),
+    collect: monitor => ({
+      isOver: !!monitor.isOver()
+    })
+  });
+
 
   return (
-    <aside>
-      {
-        tickets.map(ticket => <Ticket description={ticket.description} />)
+    <aside ref={drop}>
+      { 
+        tickets.map(ticket => {
+          return (
+            ticket.tag == 'QUE' ? 
+            <Ticket ticket={ticket} deleteTicket={deleteTicket} /> : 
+            null
+        )})
       }
     </aside>
   );

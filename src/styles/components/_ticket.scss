@@ -1,13 +1,62 @@
 
 .ticket {
+  display: flex;
   margin: 10px;
   padding: 10px 20px;
   border-radius: 20px;
   background-color: #EFC9B3;
   color: #BF5B2C;
+  transform: translate(0, 0);
 }
 
 .ticket .description {
   font-size: 16px;
   font-weight: bold;
+}
+
+.ticket .deleteButton {
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  margin-top: 5px;
+}
+
+.ticket.orange {
+  background-color: #EFC9B3;
+  color: #BF5B2C;
+
+  .deleteButton {
+    color: #BF5B2C;
+  }
+}
+
+.ticket.green {
+  background-color: #B4E5C9;
+  color: #509F6E;
+
+  .deleteButton {
+    color: #509F6E;
+  }
+}
+
+.ticket.red {
+  background-color: #ff7878;
+  color: #ea2b2b;
+
+  .deleteButton {
+    color: #ea2b2b;
+  }
+}
+
+.ticket.blue {
+  background-color: #1cb0f6;
+  color: #2b70c9;
+
+  .deleteButton {
+    color: #2b70c9;
+  }
 }

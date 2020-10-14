@@ -1,6 +1,6 @@
 .calender {
   display: grid;
-  grid-template-columns: repeat(7, 260px);
+  grid-template-columns: repeat(7, 270px);
   margin-right: 25px;
   overflow: auto;
 }
@@ -20,10 +20,11 @@
 }
 
 .calender .dayBackground {
-  background: linear-gradient(
-    to bottom,
-    #fff 90%,
-    var(--stripes) 10%
-  );
-  background-size: 100% 20px;
+  padding-top: 33px;
+  background: linear-gradient(to bottom, #fff 96%, var(--stripes) 5%);
+  background-size: 100% 35px;
+}
+
+.calender .dayBackground.selected {
+  opacity: 0.5;
 }
