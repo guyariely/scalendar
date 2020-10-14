@@ -1,0 +1,32 @@
+
+body {
+  font-family: 'Nunito', 'Segoe UI', Helvetica, Arial, sans-serif;
+  color: var(--text);
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, p {
+  margin: 0;
+}
+
+*, input, button {
+  outline:none !important;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+::selection {
+  background: var(--primary);
+  color: var(--background);
+}
+

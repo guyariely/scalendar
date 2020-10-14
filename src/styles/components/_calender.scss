@@ -1,0 +1,29 @@
+.calender {
+  display: grid;
+  grid-template-columns: repeat(7, 260px);
+  margin-right: 25px;
+  overflow: auto;
+}
+
+.calender .day {
+  margin: 0 15px;
+  display: grid;
+  grid-template-rows: 40px auto;
+}
+
+.calender .dayName {
+  color: var(--light-text);
+}
+
+.calender .dayNameActive {
+  color: var(--text);
+}
+
+.calender .dayBackground {
+  background: linear-gradient(
+    to bottom,
+    #fff 90%,
+    var(--stripes) 10%
+  );
+  background-size: 100% 20px;
+}

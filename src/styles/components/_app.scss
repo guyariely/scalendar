@@ -1,0 +1,17 @@
+#app {
+  overflow: hidden;
+  height: 100vh;
+  background: var(--background);
+}
+
+.app-container {
+  display: grid;
+  grid-template-columns: 240px auto;
+  height: 100%;
+  overflow: hidden;
+}
+
+main {
+  display: grid;
+  grid-template-rows: 80px auto;
+}
