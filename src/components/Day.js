@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDrop } from 'react-dnd';
 import { ItemTypes } from '../Utils/items';
 import Ticket from "./Ticket";
@@ -14,7 +14,7 @@ const Day = ({ name, dayIndex, tickets, changeTicketTag, deleteTicket }) => {
   });
 
   const isActiveDay = () => {
-    return new Date().getDay() == dayIndex;
+    return new Date().getDay() === dayIndex;
   }
 
   return (

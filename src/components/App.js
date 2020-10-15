@@ -24,13 +24,13 @@ const App = () => {
   }, [tickets]);
 
   const changeTicketTag = (id, newTag) => {
-    const ticket = tickets.find(ticket => ticket.id == id);
+    const ticket = tickets.find(ticket => ticket.id === id);
     ticket.tag = newTag;
-    setTickets(tickets.filter(ticket => ticket.id != id).concat(ticket));
+    setTickets(tickets.filter(ticket => ticket.id !== id).concat(ticket));
   };
 
   const deleteTicket = id => {
-    setTickets(tickets.filter(ticket => ticket.id != id));
+    setTickets(tickets.filter(ticket => ticket.id !== id));
   };
 
   const addNewTicket = newTicketInput => {

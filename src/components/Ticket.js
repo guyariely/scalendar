@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDrag } from 'react-dnd';
 import { ItemTypes } from '../Utils/items';
 

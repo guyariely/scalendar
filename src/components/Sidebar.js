@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Ticket from './Ticket';
 
 import { useDrop } from 'react-dnd';
@@ -6,14 +6,10 @@ import { ItemTypes } from '../Utils/items';
 
 const Sidebar = ({tickets, changeTicketTag, deleteTicket}) => {
 
-  const [{isOver}, drop] = useDrop({
+  const [, drop] = useDrop({
     accept: ItemTypes.TICKET,
-    drop: (item, monitor) => changeTicketTag(item.id, "QUE"),
-    collect: monitor => ({
-      isOver: !!monitor.isOver()
-    })
+    drop: (item, monitor) => changeTicketTag(item.id, "QUE")
   });
-
 
   return (
     <aside ref={drop}>
@@ -21,7 +17,7 @@ const Sidebar = ({tickets, changeTicketTag, deleteTicket}) => {
       { 
         tickets.map(ticket => {
           return (
-            ticket.tag == 'QUE' ? 
+            ticket.tag === 'QUE' ? 
             <Ticket ticket={ticket} deleteTicket={deleteTicket} /> : 
             null
         )})

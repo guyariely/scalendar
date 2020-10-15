@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Day from './Day';
 
 const Calender = ({tickets, changeTicketTag, deleteTicket}) => {
@@ -10,9 +10,10 @@ const Calender = ({tickets, changeTicketTag, deleteTicket}) => {
       {dayNames.map((name, index) => {
         return (
           <Day 
+            key={name}
             name={name} 
             dayIndex={index}  
-            tickets={tickets.filter(ticket => ticket.tag == name)}
+            tickets={tickets.filter(ticket => ticket.tag === name)}
             changeTicketTag={changeTicketTag}
             deleteTicket={deleteTicket}
           />
