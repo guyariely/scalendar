@@ -1,4 +1,54 @@
 
 .toolbar {
-  // border-bottom: solid 1px black;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.toolbar .newTicketBox {
+  display: flex;
+}
+
+.toolbar .newTicketBox input {
+  font-size: 18px;
+  border: none;
+  background-color: #F7F8FB;
+  height: 50px;
+  border-radius: 20px;
+  width: 400px;
+  padding: 0 20px;
+  font-weight: bold;
+  color: #23274F;
+}
+
+.toolbar .newTicketBox input::placeholder {
+  color: #BFCBD2;
+}
+
+.toolbar .newTicketButton {
+  background: #F7F8FB;
+  border: none;
+  margin: 0 10px;
+  height: 50px;
+  width: 50px;
+  border-radius: 20px;
+  font-size: 30px;
+  color: #BFCBD2;
+
+  &:hover {
+    color: var(--text);
+  }
+}
+
+.toolbar .clearTicketsButton {
+  border: none;
+  height: 50px;
+  width: 50px;
+  border-radius: 20px;
+  font-size: 30px;
+  background: none;
+
+  &:hover {
+    opacity: 0.5;
+  }
 }

@@ -20,9 +20,8 @@ const Ticket = ({ ticket, deleteTicket }) => {
 
   return (
     <div 
-      className={"ticket " + theme}
+      className={"ticket " + theme + (isDragging ? " selected" : "")}
       ref={drag}
-      opacity={isDragging ? '0.5' : '1'}
     >
     <p className="description">{description}</p>
     <button 

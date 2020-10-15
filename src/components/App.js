@@ -6,6 +6,7 @@ import ToolBar from './ToolBar';
 
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import { randomColor } from '../Utils/randomColor';
 
 const App = () => {
 
@@ -44,6 +45,19 @@ const App = () => {
 
   const deleteTicket = id => {
     setTickets(tickets.filter(ticket => ticket.id != id));
+  };
+
+  const addNewTicket = newTicketInput => {
+    setTickets(tickets.concat({
+      id: Math.random(),
+      tag: 'QUE',
+      description: newTicketInput,
+      theme: randomColor()
+    }));
+  };
+
+  const clearTickets = () => {
+    setTickets([]);
   }
 
   return (
@@ -56,7 +70,10 @@ const App = () => {
             deleteTicket={deleteTicket}
           />
           <main>
-            <ToolBar />
+            <ToolBar 
+              addNewTicket={addNewTicket} 
+              clearTickets={clearTickets}
+            />
             <Calender 
               tickets={tickets} 
               changeTicketTag={changeTicketTag}

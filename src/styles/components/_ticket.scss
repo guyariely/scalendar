@@ -1,12 +1,17 @@
 
 .ticket {
   display: flex;
+  justify-content: space-between;
   margin: 10px;
   padding: 10px 20px;
   border-radius: 20px;
   background-color: #EFC9B3;
   color: #BF5B2C;
   transform: translate(0, 0);
+}
+
+.ticket.selected {
+  opacity: 0;
 }
 
 .ticket .description {
