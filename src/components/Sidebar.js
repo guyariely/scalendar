@@ -18,7 +18,11 @@ const Sidebar = ({tickets, changeTicketTag, deleteTicket}) => {
         tickets.map(ticket => {
           return (
             ticket.tag === 'QUE' ? 
-            <Ticket ticket={ticket} deleteTicket={deleteTicket} /> : 
+            <Ticket 
+              ticket={ticket} 
+              deleteTicket={deleteTicket} 
+              key={ticket.id}
+            /> : 
             null
         )})
       }

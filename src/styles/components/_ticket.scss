@@ -8,6 +8,7 @@
   background-color: #EFC9B3;
   color: #BF5B2C;
   transform: translate(0, 0);
+  word-break: break-word;
 }
 
 .ticket.selected {
@@ -28,6 +29,7 @@
   font-weight: bold;
   display: flex;
   margin-top: 5px;
+  padding-left: 10px;
 }
 
 .ticket.orange {
