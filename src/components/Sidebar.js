@@ -17,6 +17,7 @@ const Sidebar = ({tickets, changeTicketTag, deleteTicket}) => {
 
   return (
     <aside ref={drop}>
+      <h1 className="logo">Scalendar</h1>
       { 
         tickets.map(ticket => {
           return (

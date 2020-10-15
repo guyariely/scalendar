@@ -1,3 +1,10 @@
 aside {
   background-color: var(--sidebar);
 }
+
+aside .logo {
+  font-size: 38px;
+  display: flex;
+  justify-content: center;
+  padding: 15px 0;
+}
