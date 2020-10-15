@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Sidebar from './Sidebar';
 import Calender from './Calender';
@@ -7,35 +7,21 @@ import ToolBar from './ToolBar';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { randomColor } from '../Utils/randomColor';
+import uniqid from 'uniqid';
 
 const App = () => {
 
-  const [tickets, setTickets] = useState([
-    {
-      description: "Free Day - Youtube, Games, Movies, Articles, Books",
-      id: 122453,
-      tag: 'QUE',
-      theme: 'green'
-    },
-    {
-      description: "Architecture - Wikipedia, Articles, Videos",
-      id: 232352,
-      tag: 'QUE',
-      theme: 'orange'
-    },
-    {
-      description: "Free Day - Youtube, Games, Movies, Articles, Books",
-      id: 98439,
-      tag: 'TUE',
-      theme: 'red'
-    },
-    {
-      description: "Architecture - Wikipedia, Articles, Videos",
-      id: 345895722,
-      tag: 'WED',
-      theme: 'blue'
-    }
-  ]);
+  const [tickets, setTickets] = useState([]);
+
+  useEffect(() => {
+    const storedTickets = localStorage.getItem('tickets');
+    if (storedTickets)
+      setTickets(JSON.parse(storedTickets));
+  }, []);
+
+  useEffect(() => {
+    persistTicketsToStorage(tickets);
+  }, [tickets]);
 
   const changeTicketTag = (id, newTag) => {
     const ticket = tickets.find(ticket => ticket.id == id);
@@ -49,7 +35,7 @@ const App = () => {
 
   const addNewTicket = newTicketInput => {
     setTickets(tickets.concat({
-      id: Math.random(),
+      id: uniqid(),
       tag: 'QUE',
       description: newTicketInput,
       theme: randomColor()
@@ -58,6 +44,10 @@ const App = () => {
 
   const clearTickets = () => {
     setTickets([]);
+  }
+
+  const persistTicketsToStorage = tickets => {
+    localStorage.setItem("tickets", JSON.stringify(tickets));
   }
 
   return (
