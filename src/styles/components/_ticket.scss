@@ -1,12 +1,11 @@
-
 .ticket {
   display: flex;
   justify-content: space-between;
   margin: 10px;
   padding: 10px 20px;
   border-radius: 20px;
-  background-color: #EFC9B3;
-  color: #BF5B2C;
+  background-color: #efc9b3;
+  color: #bf5b2c;
   transform: translate(0, 0);
   word-break: break-word;
 }
@@ -33,20 +32,20 @@
 }
 
 .ticket.orange {
-  background-color: #EFC9B3;
-  color: #BF5B2C;
+  background-color: #efc9b3;
+  color: #bf5b2c;
 
   .deleteButton {
-    color: #BF5B2C;
+    color: #bf5b2c;
   }
 }
 
 .ticket.green {
-  background-color: #B4E5C9;
-  color: #509F6E;
+  background-color: #b4e5c9;
+  color: #509f6e;
 
   .deleteButton {
-    color: #509F6E;
+    color: #509f6e;
   }
 }
 
@@ -65,5 +64,59 @@
 
   .deleteButton {
     color: #2b70c9;
+  }
+}
+
+.ticket.purple {
+  background-color: #ce82ff;
+  color: #634590;
+
+  .deleteButton {
+    color: #634590;
+  }
+}
+
+.ticket.pink {
+  background-color: #ffb2b2;
+  color: #ff4b4b;
+
+  .deleteButton {
+    color: #ff4b4b;
+  }
+}
+
+.ticket.turquoise {
+  background-color: #d2e4e8;
+  color: #425863;
+
+  .deleteButton {
+    color: #425863;
+  }
+}
+
+.ticket.maroon {
+  background-color: #b7657b;
+  color: #502e2e;
+
+  .deleteButton {
+    color: #502e2e;
+  }
+}
+
+.ticket.grey {
+  background-color: #afafaf;
+  color: #4b4b4b;
+
+  .deleteButton {
+    color: #4b4b4b;
+  }
+}
+
+.ticket.yellow {
+  background-color: #ffe06e;
+  color: #ca7702;
+
+  .deleteButton {
+    color: #ca7702;
   }
 }
