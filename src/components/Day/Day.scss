@@ -1,10 +1,3 @@
-.calender {
-  display: grid;
-  grid-template-columns: repeat(7, 270px);
-  margin-right: 25px;
-  overflow: auto;
-}
-
 .calender .day {
   margin: 0 15px;
   display: grid;
@@ -23,7 +16,6 @@
   padding-top: 33px;
   background: linear-gradient(to bottom, #fff 96%, var(--stripes) 5%);
   background-size: 100% 35px;
-
 }
 
 .calender .dayBackground.selected {

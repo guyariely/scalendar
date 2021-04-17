@@ -1,0 +1,6 @@
+.calender {
+  display: grid;
+  grid-template-columns: repeat(7, 270px);
+  margin-right: 25px;
+  overflow: auto;
+}
