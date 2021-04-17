@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useTheme } from "../../hooks/hooks";
 import "./ToolBar.scss";
 
 const ToolBar = ({ addNewTicket, clearTickets }) => {
   const [newTicketInput, setNewTicketInput] = useState("");
+  const toggleTheme = useTheme("light");
 
   const sendInput = newTicketInput => {
     if (newTicketInput) {
@@ -28,6 +30,9 @@ const ToolBar = ({ addNewTicket, clearTickets }) => {
           +
         </button>
       </div>
+      <button className="toggle-theme-button" onClick={() => toggleTheme()}>
+        🌓
+      </button>
       <button className="clear-tickets-button" onClick={() => clearTickets()}>
         🗑
       </button>

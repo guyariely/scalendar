@@ -1,6 +1,5 @@
 .toolbar {
   display: flex;
-  justify-content: space-between;
   padding: 15px;
 
   .new-ticket-wrapper {
@@ -38,7 +37,8 @@
     }
   }
 
-  .clear-tickets-button {
+  .clear-tickets-button,
+  .toggle-theme-button {
     border: none;
     height: 50px;
     width: 50px;
@@ -49,5 +49,9 @@
     &:hover {
       opacity: 0.5;
     }
+  }
+
+  .toggle-theme-button {
+    margin-left: auto;
   }
 }

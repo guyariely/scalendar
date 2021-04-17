@@ -26,3 +26,11 @@
   --color-yellow-background: #ffe06e;
   --color-yellow-text: #ca7702;
 }
+
+[data-theme="dark"] {
+  --color-background: #202124;
+  --color-background-secondary: #292a2d;
+  --color-light-text: #b3b3b3;
+  --color-text: #fff;
+  --color-stripes: #585858;
+}

@@ -22,11 +22,7 @@ const Day = ({ name, dayIndex, tickets, changeTicketTag, deleteTicket }) => {
       <h1 className={isActiveDay() ? "day-name-active" : "day-name"}>{name}</h1>
       <div className={isOver ? "day-background selected" : "day-background"}>
         {tickets.map(ticket => (
-          <Ticket
-            ticket={ticket}
-            deleteTicket={deleteTicket}
-            key={ticket.key}
-          />
+          <Ticket ticket={ticket} deleteTicket={deleteTicket} key={ticket.id} />
         ))}
       </div>
     </div>
