@@ -18,13 +18,27 @@ const Ticket = ({ ticket, deleteTicket }) => {
     }),
   });
 
+  const ticketStyle = {
+    backgroundColor: `var(--color-${theme}-background)`,
+    color: `var(--color-${theme}-text)`,
+  };
+
+  const deleteButtonStyle = {
+    color: `var(--color-${theme}-text)`,
+  };
+
   return (
     <div
       className={"ticket " + theme + (isDragging ? " selected" : "")}
+      style={ticketStyle}
       ref={drag}
     >
       <p className="description">{description}</p>
-      <button className="deleteButton" onClick={() => deleteTicket(id)}>
+      <button
+        className="delete-button"
+        onClick={() => deleteTicket(id)}
+        style={deleteButtonStyle}
+      >
         ✕
       </button>
     </div>

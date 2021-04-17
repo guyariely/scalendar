@@ -19,8 +19,8 @@ const Day = ({ name, dayIndex, tickets, changeTicketTag, deleteTicket }) => {
 
   return (
     <div className="day" ref={drop}>
-      <h1 className={isActiveDay() ? "dayNameActive" : "dayName"}>{name}</h1>
-      <div className={isOver ? "dayBackground selected" : "dayBackground"}>
+      <h1 className={isActiveDay() ? "day-name-active" : "day-name"}>{name}</h1>
+      <div className={isOver ? "day-background selected" : "day-background"}>
         {tickets.map(ticket => (
           <Ticket
             ticket={ticket}

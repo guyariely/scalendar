@@ -1,7 +1,7 @@
 #app {
   overflow: hidden;
   height: 100vh;
-  background: var(--background);
+  background: var(--color-background);
 }
 
 .app-container {
@@ -11,7 +11,7 @@
   overflow: hidden;
 }
 
-main {
+.calender-toolbar-wrapper {
   display: grid;
   grid-template-rows: 80px auto;
 }

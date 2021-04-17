@@ -1,9 +1,9 @@
-aside {
-  background-color: var(--sidebar);
+.sidebar {
+  background-color: var(--color-background-secondary);
   overflow: auto;
 }
 
-aside .logo {
+.sidebar .logo {
   font-size: 38px;
   display: flex;
   justify-content: center;

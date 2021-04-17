@@ -1,16 +1,22 @@
-
 body {
-  font-family: 'Nunito', 'Segoe UI', Helvetica, Arial, sans-serif;
-  color: var(--text);
+  font-family: "Nunito", "Segoe UI", Helvetica, Arial, sans-serif;
+  color: var(--color-text);
   margin: 0;
 }
 
-h1, h2, h3, h4, h5, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
   margin: 0;
 }
 
-*, input, button {
-  outline:none !important;
+*,
+input,
+button {
+  outline: none !important;
 }
 
 button {
@@ -26,7 +32,6 @@ button:disabled {
 }
 
 ::selection {
-  background: var(--primary);
-  color: var(--background);
+  background: var(--color-primary);
+  color: var(--color-background);
 }
-

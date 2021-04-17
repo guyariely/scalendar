@@ -4,119 +4,27 @@
   margin: 10px;
   padding: 10px 20px;
   border-radius: 20px;
-  background-color: #efc9b3;
-  color: #bf5b2c;
   transform: translate(0, 0);
   word-break: break-word;
-}
 
-.ticket.selected {
-  opacity: 0;
-}
-
-.ticket .description {
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.ticket .deleteButton {
-  background: none;
-  border: none;
-  margin: 0;
-  padding: 0;
-  font-size: 16px;
-  font-weight: bold;
-  display: flex;
-  margin-top: 5px;
-  padding-left: 10px;
-}
-
-.ticket.orange {
-  background-color: #efc9b3;
-  color: #bf5b2c;
-
-  .deleteButton {
-    color: #bf5b2c;
+  .description {
+    font-size: 16px;
+    font-weight: bold;
   }
-}
 
-.ticket.green {
-  background-color: #b4e5c9;
-  color: #509f6e;
-
-  .deleteButton {
-    color: #509f6e;
+  .delete-button {
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    margin-top: 5px;
+    padding-left: 10px;
   }
-}
 
-.ticket.red {
-  background-color: #ff7878;
-  color: #ea2b2b;
-
-  .deleteButton {
-    color: #ea2b2b;
-  }
-}
-
-.ticket.blue {
-  background-color: #1cb0f6;
-  color: #2b70c9;
-
-  .deleteButton {
-    color: #2b70c9;
-  }
-}
-
-.ticket.purple {
-  background-color: #ce82ff;
-  color: #634590;
-
-  .deleteButton {
-    color: #634590;
-  }
-}
-
-.ticket.pink {
-  background-color: #ffb2b2;
-  color: #ff4b4b;
-
-  .deleteButton {
-    color: #ff4b4b;
-  }
-}
-
-.ticket.turquoise {
-  background-color: #d2e4e8;
-  color: #425863;
-
-  .deleteButton {
-    color: #425863;
-  }
-}
-
-.ticket.maroon {
-  background-color: #b7657b;
-  color: #502e2e;
-
-  .deleteButton {
-    color: #502e2e;
-  }
-}
-
-.ticket.grey {
-  background-color: #afafaf;
-  color: #4b4b4b;
-
-  .deleteButton {
-    color: #4b4b4b;
-  }
-}
-
-.ticket.yellow {
-  background-color: #ffe06e;
-  color: #ca7702;
-
-  .deleteButton {
-    color: #ca7702;
+  &.selected {
+    opacity: 0;
   }
 }

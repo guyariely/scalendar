@@ -25,7 +25,7 @@ const App = () => {
             changeTicketTag={changeTicketTag}
             deleteTicket={deleteTicket}
           />
-          <main>
+          <main className="calender-toolbar-wrapper">
             <ToolBar addNewTicket={addNewTicket} clearTickets={clearTickets} />
             <Calender
               tickets={tickets}
