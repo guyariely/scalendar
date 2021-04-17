@@ -6,13 +6,6 @@ const ToolBar = ({ addNewTicket, clearTickets }) => {
   const [newTicketInput, setNewTicketInput] = useState("");
   const toggleTheme = useTheme("light");
 
-  const sendInput = newTicketInput => {
-    if (newTicketInput) {
-      setNewTicketInput("");
-      addNewTicket(newTicketInput);
-    }
-  };
-
   return (
     <div className="toolbar">
       <div className="new-ticket-wrapper">
@@ -25,16 +18,20 @@ const ToolBar = ({ addNewTicket, clearTickets }) => {
         />
         <button
           className="new-ticket-button"
-          onClick={() => sendInput(newTicketInput)}
+          onClick={() => newTicketInput && addNewTicket(newTicketInput)}
         >
           +
         </button>
       </div>
       <button className="toggle-theme-button" onClick={() => toggleTheme()}>
-        🌓
+        <span role="img" aria-label="toggle-theme">
+          🌓
+        </span>
       </button>
       <button className="clear-tickets-button" onClick={() => clearTickets()}>
-        🗑
+        <span role="img" aria-label="toggle-theme">
+          🗑
+        </span>
       </button>
     </div>
   );
