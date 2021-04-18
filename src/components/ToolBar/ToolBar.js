@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { useTheme } from "../../hooks/hooks";
+import React from "react";
+import { useTheme, useInput } from "../../hooks/hooks";
 import "./ToolBar.scss";
 
 const ToolBar = ({ addNewTicket, clearTickets }) => {
-  const [newTicketInput, setNewTicketInput] = useState("");
+  const { input, onChangeInput, onSubmitInput } = useInput("");
   const toggleTheme = useTheme("light");
 
   return (
@@ -11,14 +11,15 @@ const ToolBar = ({ addNewTicket, clearTickets }) => {
       <div className="new-ticket-wrapper">
         <input
           type="text"
-          value={newTicketInput}
-          onChange={e => setNewTicketInput(e.target.value)}
+          value={input}
+          onChange={onChangeInput}
           placeholder="Add new ticket ..."
           className="new-ticket-input"
         />
         <button
           className="new-ticket-button"
-          onClick={() => newTicketInput && addNewTicket(newTicketInput)}
+          onClick={() => onSubmitInput(addNewTicket)}
+          disabled={!input}
         >
           +
         </button>

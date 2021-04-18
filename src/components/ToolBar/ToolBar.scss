@@ -35,6 +35,10 @@
     &:hover {
       color: var(--color-text);
     }
+
+    &:disabled {
+      color: var(--color-light-text);
+    }
   }
 
   .clear-tickets-button,
