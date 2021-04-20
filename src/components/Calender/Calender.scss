@@ -1,6 +1,8 @@
 .calender {
   display: grid;
-  grid-template-columns: repeat(7, 270px);
-  margin-right: 25px;
+  // calender's right padding hides the .day element,
+  // so ghost-element-padding acts as a 8th invisible element.
+  // 7 days (270px in width) and the ghost-element-padding (25px in width)
+  grid-template-columns: repeat(7, 270px) 15px;
   overflow: auto;
 }

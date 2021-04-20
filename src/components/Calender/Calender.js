@@ -19,6 +19,7 @@ const Calender = ({ tickets, changeTicketTag, deleteTicket }) => {
           />
         );
       })}
+      <div className="ghost-element-padding"></div>
     </div>
   );
 };
