@@ -4,7 +4,8 @@ import { useDrop } from "react-dnd";
 import { ItemTypes } from "../../Utils/items";
 import "./Sidebar.scss";
 
-const Sidebar = ({ tickets, changeTicketTag, deleteTicket }) => {
+const Sidebar = props => {
+  const { tickets, changeTicketTag, deleteTicket, updateDescription } = props;
   const [, drop] = useDrop({
     accept: ItemTypes.TICKET,
     drop: (item, monitor) => changeTicketTag(item.id, "QUE"),
@@ -15,7 +16,12 @@ const Sidebar = ({ tickets, changeTicketTag, deleteTicket }) => {
       <h1 className="logo">Scalendar</h1>
       {tickets.map(ticket => {
         return ticket.tag === "QUE" ? (
-          <Ticket ticket={ticket} deleteTicket={deleteTicket} key={ticket.id} />
+          <Ticket
+            ticket={ticket}
+            deleteTicket={deleteTicket}
+            updateDescription={updateDescription}
+            key={ticket.id}
+          />
         ) : null;
       })}
     </aside>

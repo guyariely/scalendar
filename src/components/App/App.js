@@ -14,6 +14,7 @@ const App = () => {
     deleteTicket,
     addNewTicket,
     clearTickets,
+    updateDescription,
   } = useTickets();
 
   return (
@@ -24,6 +25,7 @@ const App = () => {
             tickets={tickets}
             changeTicketTag={changeTicketTag}
             deleteTicket={deleteTicket}
+            updateDescription={updateDescription}
           />
           <main className="calender-toolbar-wrapper">
             <ToolBar addNewTicket={addNewTicket} clearTickets={clearTickets} />
@@ -31,6 +33,7 @@ const App = () => {
               tickets={tickets}
               changeTicketTag={changeTicketTag}
               deleteTicket={deleteTicket}
+              updateDescription={updateDescription}
             />
           </main>
         </div>

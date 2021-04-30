@@ -4,10 +4,19 @@ import { ItemTypes } from "../../Utils/items";
 import Ticket from "../Ticket/Ticket";
 import "./Day.scss";
 
-const Day = ({ name, dayIndex, tickets, changeTicketTag, deleteTicket }) => {
+const Day = props => {
+  const {
+    name,
+    dayIndex,
+    tickets,
+    changeTicketTag,
+    deleteTicket,
+    updateDescription,
+  } = props;
+
   const [{ isOver }, drop] = useDrop({
     accept: ItemTypes.TICKET,
-    drop: (item, monitor) => changeTicketTag(item.id, name),
+    drop: item => changeTicketTag(item.id, name),
     collect: monitor => ({
       isOver: !!monitor.isOver(),
     }),
@@ -22,7 +31,12 @@ const Day = ({ name, dayIndex, tickets, changeTicketTag, deleteTicket }) => {
       <h1 className={isActiveDay() ? "day-name-active" : "day-name"}>{name}</h1>
       <div className={isOver ? "day-background selected" : "day-background"}>
         {tickets.map(ticket => (
-          <Ticket ticket={ticket} deleteTicket={deleteTicket} key={ticket.id} />
+          <Ticket
+            ticket={ticket}
+            deleteTicket={deleteTicket}
+            updateDescription={updateDescription}
+            key={ticket.id}
+          />
         ))}
       </div>
     </div>

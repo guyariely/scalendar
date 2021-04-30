@@ -2,7 +2,8 @@ import React from "react";
 import Day from "../Day/Day";
 import "./Calender.scss";
 
-const Calender = ({ tickets, changeTicketTag, deleteTicket }) => {
+const Calender = props => {
+  const { tickets, changeTicketTag, deleteTicket, updateDescription } = props;
   const dayNames = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
   return (
@@ -16,6 +17,7 @@ const Calender = ({ tickets, changeTicketTag, deleteTicket }) => {
             tickets={tickets.filter(ticket => ticket.tag === name)}
             changeTicketTag={changeTicketTag}
             deleteTicket={deleteTicket}
+            updateDescription={updateDescription}
           />
         );
       })}

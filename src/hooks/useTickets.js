@@ -35,6 +35,13 @@ function useTickets() {
     );
   };
 
+  const updateDescription = (id, description) => {
+    const updatedTickets = tickets.map(ticket =>
+      ticket.id === id ? { ...ticket, description } : ticket
+    );
+    setTickets(updatedTickets);
+  };
+
   const clearTickets = () => {
     setTickets([]);
   };
@@ -49,6 +56,7 @@ function useTickets() {
     deleteTicket,
     addNewTicket,
     clearTickets,
+    updateDescription,
   };
 }
 
