@@ -4,7 +4,7 @@ import "./ToolBar.scss";
 
 const ToolBar = ({ addNewTicket, clearTickets }) => {
   const { input, onChangeInput, onSubmitInput } = useInput("");
-  const toggleTheme = useTheme("light");
+  const toggleTheme = useTheme();
 
   return (
     <div className="toolbar">
