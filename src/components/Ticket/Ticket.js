@@ -3,7 +3,33 @@ import { useDrag } from "react-dnd";
 import { ItemTypes } from "../../Utils/items";
 import ClickOutsideWrapper from "../ClickOutsideWrapper/ClickOutsideWrapper";
 import EditableDescription from "../EditableDescription/EditableDescription";
-import "./Ticket.scss";
+import styled from "styled-components";
+
+const Container = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  transform: translate(0, 0);
+  word-break: break-word;
+  opacity: ${({ isDragging }) => (isDragging ? "0" : "1")};
+  background-color: ${({ theme }) => `var(--color-${theme}-background)`};
+  color: ${({ theme }) => `var(--color-${theme}-text)`};
+`;
+
+const DeleteButton = styled.button`
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  margin-top: 5px;
+  padding-left: 10px;
+  color: ${({ theme }) => `var(--color-${theme}-text)`};
+`;
 
 const Ticket = props => {
   const { id, tag, theme } = props.ticket;
@@ -24,20 +50,6 @@ const Ticket = props => {
     canDrag: () => !isEditMode,
   });
 
-  const ticketStyle = {
-    backgroundColor: `var(--color-${theme}-background)`,
-    color: `var(--color-${theme}-text)`,
-  };
-
-  const deleteButtonStyle = {
-    color: `var(--color-${theme}-text)`,
-  };
-
-  const inputStyle = {
-    color: `var(--color-${theme}-text)`,
-    border: `2px solid var(--color-${theme}-text)`,
-  };
-
   function updateDescription() {
     setIsEditMode(false);
     props.updateDescription(id, description);
@@ -47,29 +59,23 @@ const Ticket = props => {
     <ClickOutsideWrapper
       onClickOutside={() => isEditMode && updateDescription()}
     >
-      <div
-        onDoubleClick={() => {
-          setIsEditMode(true);
-        }}
-        className={"ticket " + theme + (isDragging ? " selected" : "")}
-        style={ticketStyle}
+      <Container
+        onDoubleClick={() => setIsEditMode(true)}
+        isDragging={isDragging}
+        theme={theme}
         ref={drag}
       >
         <EditableDescription
           description={description}
           onChange={e => setDescription(e.target.value)}
-          style={inputStyle}
           onSubmit={updateDescription}
           isEditMode={isEditMode}
+          theme={theme}
         />
-        <button
-          className="delete-button"
-          onClick={() => props.deleteTicket(id)}
-          style={deleteButtonStyle}
-        >
+        <DeleteButton onClick={() => props.deleteTicket(id)} theme={theme}>
           ✕
-        </button>
-      </div>
+        </DeleteButton>
+      </Container>
     </ClickOutsideWrapper>
   );
 };

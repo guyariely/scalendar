@@ -1,8 +1,23 @@
 import React from "react";
-import "./EditableDescription.scss";
+import styled from "styled-components";
+
+const Input = styled.input`
+  font-weight: bold;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 16px;
+  width: 150px;
+  color: ${({ theme }) => `var(--color-${theme}-text)`};
+  border: ${({ theme }) => `2px solid var(--color-${theme}-text)`};
+`;
+
+const Description = styled.p`
+  font-size: 16px;
+  font-weight: bold;
+`;
 
 function EditableDescription(props) {
-  const { description, onChange, onSubmit, isEditMode, style } = props;
+  const { description, onChange, onSubmit, isEditMode, theme } = props;
 
   if (isEditMode) {
     return (
@@ -12,18 +27,17 @@ function EditableDescription(props) {
           onSubmit();
         }}
       >
-        <input
-          className="editable-description-input"
+        <Input
+          theme={theme}
           type="text"
           value={description}
           onChange={onChange}
-          style={style}
         />
       </form>
     );
   }
 
-  return <p className="description">{description}</p>;
+  return <Description>{description}</Description>;
 }
 
 export default EditableDescription;
