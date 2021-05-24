@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import initialData from "../initalData";
-import { randomColor } from "../Utils/randomColor";
+import { randomColor, moveElement } from "../Utils/utils";
 import uniqid from "uniqid";
 
 function useTickets() {
@@ -30,34 +30,86 @@ function useTickets() {
 
   const addNewTicket = newTicketInput => {
     const newId = uniqid();
+
     setTickets(tickets => ({
       ...tickets,
-      newId: {
+      [newId]: {
         id: newId,
         description: newTicketInput,
         theme: randomColor(),
       },
     }));
     setColumns(columns => {
-      columns.dock.tasksIds.push(newId);
+      columns[0].ticketIds.push(newId);
       return columns;
     });
   };
 
   const deleteTicket = (columnId, ticketId) => {
     setTickets(tickets => {
-      delete tickets[ticketId];
-      return tickets;
+      const newTickets = Object.assign({}, tickets);
+      delete newTickets[ticketId];
+      return newTickets;
     });
 
     setColumns(columns => {
       const column = columns[columnId];
+      return {
+        ...columns,
+        [columnId]: {
+          ...column,
+          ticketIds: column.ticketIds.filter(id => id !== ticketId),
+        },
+      };
+    });
+  };
+
+  const moveTicket = (ticketId, source, destination) => {
+    if (!destination) return;
+
+    const fromColumnId = source.droppableId;
+    const toColumnId = destination.droppableId;
+    const fromIndex = source.index;
+    const toIndex = destination.index;
+
+    if (fromColumnId === toColumnId && fromIndex === toIndex) {
+      return;
+    }
+
+    setColumns(columns => {
+      const fromColumn = columns[fromColumnId];
+      const toColumn = columns[toColumnId];
+
+      if (fromColumnId === toColumnId) {
+        const updatedTicketIds = moveElement(
+          fromColumn.ticketIds,
+          fromIndex,
+          toIndex
+        );
+
+        return {
+          ...columns,
+          [toColumnId]: {
+            ...toColumn,
+            ticketIds: updatedTicketIds,
+          },
+        };
+      }
+
+      const fromColumnsTicketIds = Array.from(fromColumn.ticketIds);
+      fromColumnsTicketIds.splice(fromIndex, 1);
+      const toColumnsTicketIds = Array.from(toColumn.ticketIds);
+      toColumnsTicketIds.splice(toIndex, 0, ticketId);
 
       return {
         ...columns,
-        columnId: {
-          ...column,
-          ticketId: column.ticketIds.filter(id => id !== ticketId),
+        [fromColumnId]: {
+          ...fromColumn,
+          ticketIds: fromColumnsTicketIds,
+        },
+        [toColumnId]: {
+          ...toColumn,
+          ticketIds: toColumnsTicketIds,
         },
       };
     });
@@ -66,7 +118,7 @@ function useTickets() {
   const updateDescription = (id, description) => {
     setTickets(tickets => ({
       ...tickets,
-      id: {
+      [id]: {
         ...tickets[id],
         description,
       },
@@ -75,6 +127,16 @@ function useTickets() {
 
   const clearTickets = () => {
     setTickets({});
+    setColumns(columns => {
+      const clearedColumns = {};
+      Object.entries(columns).forEach(([columnId, column]) => {
+        clearedColumns[columnId] = {
+          ...column,
+          ticketIds: [],
+        };
+      });
+      return clearedColumns;
+    });
   };
 
   const persistTicketsToStorage = tickets => {
@@ -90,6 +152,7 @@ function useTickets() {
     columns,
     deleteTicket,
     addNewTicket,
+    moveTicket,
     clearTickets,
     updateDescription,
   };

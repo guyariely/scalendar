@@ -18,10 +18,12 @@ const Sidebar = props => {
                 key={ticket.id}
                 ticket={ticket}
                 ticketIndex={index}
+                column={0}
                 deleteTicket={deleteTicket}
                 updateDescription={updateDescription}
               />
             ))}
+            {provided.placeholder}
           </Container>
         )}
       </Droppable>

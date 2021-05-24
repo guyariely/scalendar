@@ -1,32 +1,26 @@
 const initialData = {
   tickets: {
-    kp1ojdfi: {
-      id: "kp1ojdfi",
-      description: "onetwothree",
+    "task-1": {
+      id: "task-1",
+      description: "Create your first task!",
       theme: "orange",
     },
-    kp1ojh5l: {
-      id: "kp1ojh5l",
-      description: "zero",
+    "task-2": {
+      id: "task-2",
+      description: "Organize your tasks throughout the week",
       theme: "blue",
     },
-    kp2c9hgw: {
-      id: "kp2c9hgw",
-      description: "fewfwf",
-      theme: "purple",
-    },
-    kp2crhkl: {
-      id: "kp2crhkl",
-      description:
-        "heheheheheajdakdheheheheheajdakdheheheheheajdakdheheheheheajdakdheheheheheajdakdheheheheheajdakd",
-      theme: "purple",
+    "task-3": {
+      id: "task-3",
+      description: "Press the moon button to toggle dark mode",
+      theme: "red",
     },
   },
   columns: {
     0: {
       id: "0",
       name: "dock",
-      ticketIds: ["kp1ojdfi", "kp1ojh5l", "kp2crhkl", "kp2c9hgw"],
+      ticketIds: ["task-1", "task-2", "task-3"],
     },
     1: {
       id: "1",
@@ -43,8 +37,27 @@ const initialData = {
       name: "TUE",
       ticketIds: [],
     },
+    4: {
+      id: "4",
+      name: "WED",
+      ticketIds: [],
+    },
+    5: {
+      id: "5",
+      name: "THU",
+      ticketIds: [],
+    },
+    6: {
+      id: "6",
+      name: "FRI",
+      ticketIds: [],
+    },
+    7: {
+      id: "7",
+      name: "SAT",
+      ticketIds: [],
+    },
   },
-  daysOrder: ["0", "1", "2", "3"],
 };
 
 export default initialData;

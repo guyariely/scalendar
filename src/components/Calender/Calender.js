@@ -4,10 +4,11 @@ import { StyledCalendar } from "./style";
 
 const Calender = props => {
   const { tickets, columns, deleteTicket, updateDescription } = props;
+  const days = new Array(7).fill(0).map((_, index) => index + 1);
 
   return (
     <StyledCalendar>
-      {["1", "2", "3"].map(columnId => {
+      {days.map(columnId => {
         const { id, name, ticketIds } = columns[columnId];
         const columnTickets = ticketIds.map(id => tickets[id]);
 

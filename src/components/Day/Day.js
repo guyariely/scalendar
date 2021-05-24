@@ -23,10 +23,12 @@ const Day = props => {
                 key={ticket.id}
                 ticket={ticket}
                 ticketIndex={index}
+                column={dayIndex}
                 deleteTicket={deleteTicket}
                 updateDescription={updateDescription}
               />
             ))}
+            {provided.placeholder}
           </Container>
         )}
       </Droppable>

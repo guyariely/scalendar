@@ -36,7 +36,10 @@ const Ticket = props => {
               isEditMode={isEditMode}
               theme={theme}
             />
-            <DeleteButton onClick={() => props.deleteTicket(id)} theme={theme}>
+            <DeleteButton
+              onClick={() => props.deleteTicket(props.column, id)}
+              theme={theme}
+            >
               ✕
             </DeleteButton>
             {provided.placeholder}

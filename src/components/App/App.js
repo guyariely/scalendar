@@ -12,13 +12,18 @@ const App = () => {
     columns,
     deleteTicket,
     addNewTicket,
+    moveTicket,
     clearTickets,
     updateDescription,
   } = useTickets();
 
   return (
     <StyledApp>
-      <DragDropContext onDragEnd={() => console.log("drag end")}>
+      <DragDropContext
+        onDragEnd={({ destination, source, draggableId }) =>
+          moveTicket(draggableId, source, destination)
+        }
+      >
         <Container>
           <Sidebar
             tickets={tickets}

@@ -12,5 +12,6 @@ export const Logo = styled.h1`
   padding-top: 15px;
 `;
 
-// TODO: refactor this
-export const Container = styled.div``;
+export const Container = styled.div`
+  height: 100%;
+`;
