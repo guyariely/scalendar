@@ -18,10 +18,10 @@ export const DeleteButton = styled.button`
   border: none;
   margin: 0;
   padding: 0;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   display: flex;
-  margin-top: 5px;
+  margin-top: 2px;
   padding-left: 10px;
   color: ${({ theme }) => `var(--color-${theme}-text)`};
 `;
