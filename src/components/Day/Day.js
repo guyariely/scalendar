@@ -1,42 +1,35 @@
 import React from "react";
-import { useDrop } from "react-dnd";
-import { ItemTypes } from "../../Utils/items";
 import Ticket from "../Ticket/Ticket";
 import { StyledDay, Title, Container } from "./style";
+import { Droppable } from "react-beautiful-dnd";
 
 const Day = props => {
-  const {
-    name,
-    dayIndex,
-    tickets,
-    changeTicketTag,
-    deleteTicket,
-    updateDescription,
-  } = props;
-
-  const [{ isOver }, drop] = useDrop({
-    accept: ItemTypes.TICKET,
-    drop: item => changeTicketTag(item.id, name),
-    collect: monitor => ({
-      isOver: !!monitor.isOver(),
-    }),
-  });
+  const { name, dayIndex, tickets, deleteTicket, updateDescription } = props;
 
   const isActiveDay = new Date().getDay() === dayIndex;
 
   return (
-    <StyledDay ref={drop}>
+    <StyledDay>
       <Title active={isActiveDay}>{name}</Title>
-      <Container isOver={isOver}>
-        {tickets.map(ticket => (
-          <Ticket
-            ticket={ticket}
-            deleteTicket={deleteTicket}
-            updateDescription={updateDescription}
-            key={ticket.id}
-          />
-        ))}
-      </Container>
+      <Droppable droppableId={dayIndex}>
+        {(provided, snapshot) => (
+          <Container
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+            isOver={snapshot.isDraggingOver}
+          >
+            {tickets.map((ticket, index) => (
+              <Ticket
+                key={ticket.id}
+                ticket={ticket}
+                ticketIndex={index}
+                deleteTicket={deleteTicket}
+                updateDescription={updateDescription}
+              />
+            ))}
+          </Container>
+        )}
+      </Droppable>
     </StyledDay>
   );
 };

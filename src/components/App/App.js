@@ -3,14 +3,13 @@ import Sidebar from "../Sidebar/Sidebar";
 import Calender from "../Calender/Calender";
 import ToolBar from "../ToolBar/ToolBar";
 import { useTickets } from "../../hooks/hooks";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
+import { DragDropContext } from "react-beautiful-dnd";
 import { StyledApp, Container, Main } from "./style";
 
 const App = () => {
   const {
     tickets,
-    changeTicketTag,
+    columns,
     deleteTicket,
     addNewTicket,
     clearTickets,
@@ -18,12 +17,12 @@ const App = () => {
   } = useTickets();
 
   return (
-    <DndProvider backend={HTML5Backend}>
-      <StyledApp>
+    <StyledApp>
+      <DragDropContext onDragEnd={() => console.log("drag end")}>
         <Container>
           <Sidebar
             tickets={tickets}
-            changeTicketTag={changeTicketTag}
+            columns={columns}
             deleteTicket={deleteTicket}
             updateDescription={updateDescription}
           />
@@ -31,14 +30,14 @@ const App = () => {
             <ToolBar addNewTicket={addNewTicket} clearTickets={clearTickets} />
             <Calender
               tickets={tickets}
-              changeTicketTag={changeTicketTag}
+              columns={columns}
               deleteTicket={deleteTicket}
               updateDescription={updateDescription}
             />
           </Main>
         </Container>
-      </StyledApp>
-    </DndProvider>
+      </DragDropContext>
+    </StyledApp>
   );
 };
 

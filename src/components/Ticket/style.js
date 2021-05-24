@@ -8,7 +8,6 @@ export const StyledTicket = styled.div`
   border-radius: 20px;
   transform: translate(0, 0);
   word-break: break-word;
-  opacity: ${({ isDragging }) => (isDragging ? "0" : "1")};
   background-color: ${({ theme }) => `var(--color-${theme}-background)`};
   color: ${({ theme }) => `var(--color-${theme}-text)`};
 `;

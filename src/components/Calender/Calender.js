@@ -3,19 +3,20 @@ import Day from "../Day/Day";
 import { StyledCalendar } from "./style";
 
 const Calender = props => {
-  const { tickets, changeTicketTag, deleteTicket, updateDescription } = props;
-  const dayNames = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+  const { tickets, columns, deleteTicket, updateDescription } = props;
 
   return (
     <StyledCalendar>
-      {dayNames.map((name, index) => {
+      {["1", "2", "3"].map(columnId => {
+        const { id, name, ticketIds } = columns[columnId];
+        const columnTickets = ticketIds.map(id => tickets[id]);
+
         return (
           <Day
-            key={name}
+            key={id}
             name={name}
-            dayIndex={index}
-            tickets={tickets.filter(ticket => ticket.tag === name)}
-            changeTicketTag={changeTicketTag}
+            dayIndex={id}
+            tickets={columnTickets}
             deleteTicket={deleteTicket}
             updateDescription={updateDescription}
           />

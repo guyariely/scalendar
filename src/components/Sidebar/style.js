@@ -11,3 +11,6 @@ export const Logo = styled.h1`
   justify-content: center;
   padding-top: 15px;
 `;
+
+// TODO: refactor this
+export const Container = styled.div``;

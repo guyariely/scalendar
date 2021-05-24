@@ -1,58 +1,93 @@
 import { useEffect, useState } from "react";
+import initialData from "../initalData";
 import { randomColor } from "../Utils/randomColor";
 import uniqid from "uniqid";
 
 function useTickets() {
-  const [tickets, setTickets] = useState([]);
+  const [tickets, setTickets] = useState(initialData.tickets);
+  const [columns, setColumns] = useState(initialData.columns);
 
   useEffect(() => {
     const storedTickets = localStorage.getItem("tickets");
-    if (storedTickets) setTickets(JSON.parse(storedTickets));
+    const storedColumns = localStorage.getItem("columns");
+
+    if (storedTickets && storedColumns) {
+      setTickets(JSON.parse(storedTickets));
+      setColumns(JSON.parse(storedColumns));
+    } else {
+      localStorage.setItem("tickets", JSON.stringify(initialData.tickets));
+      localStorage.setItem("columns", JSON.stringify(initialData.columns));
+    }
   }, []);
 
   useEffect(() => {
     persistTicketsToStorage(tickets);
   }, [tickets]);
 
-  const changeTicketTag = (id, newTag) => {
-    const ticket = tickets.find(ticket => ticket.id === id);
-    ticket.tag = newTag;
-    setTickets(tickets.filter(ticket => ticket.id !== id).concat(ticket));
-  };
-
-  const deleteTicket = id => {
-    setTickets(tickets.filter(ticket => ticket.id !== id));
-  };
+  useEffect(() => {
+    persistColumnsToStorage(columns);
+  }, [columns]);
 
   const addNewTicket = newTicketInput => {
-    setTickets(
-      tickets.concat({
-        id: uniqid(),
-        tag: "QUE",
+    const newId = uniqid();
+    setTickets(tickets => ({
+      ...tickets,
+      newId: {
+        id: newId,
         description: newTicketInput,
         theme: randomColor(),
-      })
-    );
+      },
+    }));
+    setColumns(columns => {
+      columns.dock.tasksIds.push(newId);
+      return columns;
+    });
+  };
+
+  const deleteTicket = (columnId, ticketId) => {
+    setTickets(tickets => {
+      delete tickets[ticketId];
+      return tickets;
+    });
+
+    setColumns(columns => {
+      const column = columns[columnId];
+
+      return {
+        ...columns,
+        columnId: {
+          ...column,
+          ticketId: column.ticketIds.filter(id => id !== ticketId),
+        },
+      };
+    });
   };
 
   const updateDescription = (id, description) => {
-    const updatedTickets = tickets.map(ticket =>
-      ticket.id === id ? { ...ticket, description } : ticket
-    );
-    setTickets(updatedTickets);
+    setTickets(tickets => ({
+      ...tickets,
+      id: {
+        ...tickets[id],
+        description,
+      },
+    }));
   };
 
   const clearTickets = () => {
-    setTickets([]);
+    setTickets({});
   };
 
   const persistTicketsToStorage = tickets => {
     localStorage.setItem("tickets", JSON.stringify(tickets));
   };
 
+  const persistColumnsToStorage = columns => {
+    localStorage.setItem("columns", JSON.stringify(columns));
+  };
+
   return {
     tickets,
-    changeTicketTag,
+    columns,
     deleteTicket,
     addNewTicket,
     clearTickets,
