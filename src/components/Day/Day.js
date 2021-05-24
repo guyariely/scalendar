@@ -2,7 +2,7 @@ import React from "react";
 import { useDrop } from "react-dnd";
 import { ItemTypes } from "../../Utils/items";
 import Ticket from "../Ticket/Ticket";
-import "./Day.scss";
+import { StyledDay, Title, Container } from "./style";
 
 const Day = props => {
   const {
@@ -22,14 +22,12 @@ const Day = props => {
     }),
   });
 
-  const isActiveDay = () => {
-    return new Date().getDay() === dayIndex;
-  };
+  const isActiveDay = new Date().getDay() === dayIndex;
 
   return (
-    <div className="day" ref={drop}>
-      <h1 className={isActiveDay() ? "day-name-active" : "day-name"}>{name}</h1>
-      <div className={isOver ? "day-background selected" : "day-background"}>
+    <StyledDay ref={drop}>
+      <Title active={isActiveDay}>{name}</Title>
+      <Container isOver={isOver}>
         {tickets.map(ticket => (
           <Ticket
             ticket={ticket}
@@ -38,8 +36,8 @@ const Day = props => {
             key={ticket.id}
           />
         ))}
-      </div>
-    </div>
+      </Container>
+    </StyledDay>
   );
 };
 

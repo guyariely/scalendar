@@ -2,18 +2,18 @@ import React from "react";
 import Ticket from "../Ticket/Ticket";
 import { useDrop } from "react-dnd";
 import { ItemTypes } from "../../Utils/items";
-import "./Sidebar.scss";
+import { StyledSidebar, Logo } from "./style";
 
 const Sidebar = props => {
   const { tickets, changeTicketTag, deleteTicket, updateDescription } = props;
   const [, drop] = useDrop({
     accept: ItemTypes.TICKET,
-    drop: (item, monitor) => changeTicketTag(item.id, "QUE"),
+    drop: item => changeTicketTag(item.id, "QUE"),
   });
 
   return (
-    <aside className="sidebar" ref={drop}>
-      <h1 className="logo">Scalendar</h1>
+    <StyledSidebar ref={drop}>
+      <Logo>Scalendar</Logo>
       {tickets.map(ticket => {
         return ticket.tag === "QUE" ? (
           <Ticket
@@ -24,7 +24,7 @@ const Sidebar = props => {
           />
         ) : null;
       })}
-    </aside>
+    </StyledSidebar>
   );
 };
 

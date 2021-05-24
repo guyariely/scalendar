@@ -3,33 +3,7 @@ import { useDrag } from "react-dnd";
 import { ItemTypes } from "../../Utils/items";
 import ClickOutsideWrapper from "../ClickOutsideWrapper/ClickOutsideWrapper";
 import EditableDescription from "../EditableDescription/EditableDescription";
-import styled from "styled-components";
-
-const Container = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin: 10px;
-  padding: 10px 20px;
-  border-radius: 20px;
-  transform: translate(0, 0);
-  word-break: break-word;
-  opacity: ${({ isDragging }) => (isDragging ? "0" : "1")};
-  background-color: ${({ theme }) => `var(--color-${theme}-background)`};
-  color: ${({ theme }) => `var(--color-${theme}-text)`};
-`;
-
-const DeleteButton = styled.button`
-  background: none;
-  border: none;
-  margin: 0;
-  padding: 0;
-  font-size: 16px;
-  font-weight: bold;
-  display: flex;
-  margin-top: 5px;
-  padding-left: 10px;
-  color: ${({ theme }) => `var(--color-${theme}-text)`};
-`;
+import { StyledTicket, DeleteButton } from "./style";
 
 const Ticket = props => {
   const { id, tag, theme } = props.ticket;
@@ -59,7 +33,7 @@ const Ticket = props => {
     <ClickOutsideWrapper
       onClickOutside={() => isEditMode && updateDescription()}
     >
-      <Container
+      <StyledTicket
         onDoubleClick={() => setIsEditMode(true)}
         isDragging={isDragging}
         theme={theme}
@@ -75,7 +49,7 @@ const Ticket = props => {
         <DeleteButton onClick={() => props.deleteTicket(id)} theme={theme}>
           ✕
         </DeleteButton>
-      </Container>
+      </StyledTicket>
     </ClickOutsideWrapper>
   );
 };

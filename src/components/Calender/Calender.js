@@ -1,13 +1,13 @@
 import React from "react";
 import Day from "../Day/Day";
-import "./Calender.scss";
+import { StyledCalendar } from "./style";
 
 const Calender = props => {
   const { tickets, changeTicketTag, deleteTicket, updateDescription } = props;
   const dayNames = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
   return (
-    <div className="calender">
+    <StyledCalendar>
       {dayNames.map((name, index) => {
         return (
           <Day
@@ -21,8 +21,8 @@ const Calender = props => {
           />
         );
       })}
-      <div className="ghost-element-padding"></div>
-    </div>
+      <div></div>
+    </StyledCalendar>
   );
 };
 

@@ -12,11 +12,6 @@ h5,
 p {
   margin: 0;
   cursor: default;
-
-  &::selection {
-    background: none;
-    color: none;
-  }
 }
 
 *,
@@ -36,8 +31,3 @@ button:disabled {
 ::-webkit-scrollbar {
   display: none;
 }
-
-// ::selection {
-//   background: var(--color-primary);
-//   color: var(--color-background);
-// }

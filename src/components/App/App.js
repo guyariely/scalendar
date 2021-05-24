@@ -5,7 +5,7 @@ import ToolBar from "../ToolBar/ToolBar";
 import { useTickets } from "../../hooks/hooks";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import "./App.scss";
+import { StyledApp, Container, Main } from "./style";
 
 const App = () => {
   const {
@@ -19,15 +19,15 @@ const App = () => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div id="app">
-        <div className="app-container">
+      <StyledApp>
+        <Container>
           <Sidebar
             tickets={tickets}
             changeTicketTag={changeTicketTag}
             deleteTicket={deleteTicket}
             updateDescription={updateDescription}
           />
-          <main className="calender-toolbar-wrapper">
+          <Main>
             <ToolBar addNewTicket={addNewTicket} clearTickets={clearTickets} />
             <Calender
               tickets={tickets}
@@ -35,9 +35,9 @@ const App = () => {
               deleteTicket={deleteTicket}
               updateDescription={updateDescription}
             />
-          </main>
-        </div>
-      </div>
+          </Main>
+        </Container>
+      </StyledApp>
     </DndProvider>
   );
 };
