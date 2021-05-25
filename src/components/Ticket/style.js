@@ -1,15 +1,19 @@
 import styled from "styled-components";
 
 export const StyledTicket = styled.div`
+  margin: 10px;
+`;
+
+export const Container = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 10px;
   padding: 10px 20px;
   border-radius: 20px;
-  transform: translate(0, 0);
   word-break: break-word;
   background-color: ${({ theme }) => `var(--color-${theme}-background)`};
   color: ${({ theme }) => `var(--color-${theme}-text)`};
+  transform: ${({ isDragging }) => (isDragging ? "scale(0.9)" : "")};
+  transition: transform 60ms ease-in-out;
 `;
 
 export const DeleteButton = styled.button`

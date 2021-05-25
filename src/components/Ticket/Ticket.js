@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ClickOutsideWrapper from "../ClickOutsideWrapper/ClickOutsideWrapper";
 import EditableDescription from "../EditableDescription/EditableDescription";
-import { StyledTicket, DeleteButton } from "./style";
+import { StyledTicket, Container, DeleteButton } from "./style";
 import { Draggable } from "react-beautiful-dnd";
 
 const Ticket = props => {
@@ -25,23 +25,23 @@ const Ticket = props => {
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             ref={provided.innerRef}
-            isDragging={snapshot.isDragging}
             onDoubleClick={() => setIsEditMode(true)}
-            theme={theme}
           >
-            <EditableDescription
-              description={description}
-              onChange={e => setDescription(e.target.value)}
-              onSubmit={updateDescription}
-              isEditMode={isEditMode}
-              theme={theme}
-            />
-            <DeleteButton
-              onClick={() => props.deleteTicket(props.column, id)}
-              theme={theme}
-            >
-              ✕
-            </DeleteButton>
+            <Container isDragging={snapshot.isDragging} theme={theme}>
+              <EditableDescription
+                description={description}
+                onChange={e => setDescription(e.target.value)}
+                onSubmit={updateDescription}
+                isEditMode={isEditMode}
+                theme={theme}
+              />
+              <DeleteButton
+                onClick={() => props.deleteTicket(props.column, id)}
+                theme={theme}
+              >
+                ✕
+              </DeleteButton>
+            </Container>
             {provided.placeholder}
           </StyledTicket>
         )}
