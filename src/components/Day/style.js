@@ -13,11 +13,15 @@ export const Title = styled.h1`
 
 export const Container = styled.div`
   padding-top: 33px;
+  border-radius: 20px;
   background: linear-gradient(
     to bottom,
-    var(--color-background) 96%,
+    ${({ isOver }) =>
+        isOver
+          ? "var(--color-background-secondary)"
+          : "var(--color-background)"}
+      96%,
     var(--color-stripes) 5%
   );
   background-size: 100% 35px;
-  opacity: ${({ isOver }) => (isOver ? "0.5" : "1")};
 `;
