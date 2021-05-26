@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ClickOutsideWrapper from "../ClickOutsideWrapper/ClickOutsideWrapper";
+import ClickOutsideWrapper from "react-click-outside-wrapper";
 import EditableDescription from "../EditableDescription/EditableDescription";
 import { StyledTicket, Container, DeleteButton } from "./style";
 import { Draggable } from "react-beautiful-dnd";
