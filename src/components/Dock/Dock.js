@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
 import Ticket from "../Ticket/Ticket";
-import { StyledSidebar, Logo, Container } from "./style";
+import { StyledDock, Logo, Container } from "./style";
 import { Droppable } from "react-beautiful-dnd";
 import CalendarContext from "../../context/CalendarContext";
 
-function Sidebar() {
+function Dock() {
   const { columns, tickets } = useContext(CalendarContext);
   const columnTickets = columns["0"].ticketIds.map(id => tickets[id]);
 
   return (
-    <StyledSidebar>
+    <StyledDock>
       <Logo>Scalendar</Logo>
       <Droppable droppableId={"0"}>
         {provided => (
@@ -26,8 +26,8 @@ function Sidebar() {
           </Container>
         )}
       </Droppable>
-    </StyledSidebar>
+    </StyledDock>
   );
 }
 
-export default Sidebar;
+export default Dock;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledSidebar = styled.aside`
+export const StyledDock = styled.aside`
   background-color: var(--color-background-secondary);
   overflow: auto;
 `;
