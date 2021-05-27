@@ -3,7 +3,7 @@ import Ticket from "../Ticket/Ticket";
 import { StyledDay, Title, Container } from "./style";
 import { Droppable } from "react-beautiful-dnd";
 
-const Day = props => {
+function Day(props) {
   const { name, dayIndex, tickets } = props;
 
   const isActiveDay = new Date().getDay() === Number(dayIndex - 1);
@@ -32,6 +32,6 @@ const Day = props => {
       </Droppable>
     </StyledDay>
   );
-};
+}
 
 export default Day;

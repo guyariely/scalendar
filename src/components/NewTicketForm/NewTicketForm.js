@@ -2,7 +2,7 @@ import React from "react";
 import { useInput } from "../../hooks/hooks";
 import { Form, Input, SubmitButton } from "./style";
 
-const NewTicketForm = ({ addNewTicket }) => {
+function NewTicketForm({ addNewTicket }) {
   const { input, onChangeInput, onSubmitInput } = useInput("");
 
   return (
@@ -21,6 +21,6 @@ const NewTicketForm = ({ addNewTicket }) => {
       </SubmitButton>
     </Form>
   );
-};
+}
 
 export default NewTicketForm;

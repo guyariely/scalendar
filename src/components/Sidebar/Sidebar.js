@@ -4,7 +4,7 @@ import { StyledSidebar, Logo, Container } from "./style";
 import { Droppable } from "react-beautiful-dnd";
 import CalendarContext from "../../context/CalendarContext";
 
-const Sidebar = props => {
+function Sidebar() {
   const { columns, tickets } = useContext(CalendarContext);
   const columnTickets = columns["0"].ticketIds.map(id => tickets[id]);
 
@@ -28,6 +28,6 @@ const Sidebar = props => {
       </Droppable>
     </StyledSidebar>
   );
-};
+}
 
 export default Sidebar;

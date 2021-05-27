@@ -8,7 +8,7 @@ import CalendarContext, {
   CalendarProvider,
 } from "../../context/CalendarContext";
 
-const AppContainer = () => {
+function AppContainer() {
   const { moveTicket } = useContext(CalendarContext);
 
   function handleDragEnd({ destination, source, draggableId }) {
@@ -28,14 +28,14 @@ const AppContainer = () => {
       </DragDropContext>
     </StyledApp>
   );
-};
+}
 
-const App = () => {
+function App() {
   return (
     <CalendarProvider>
       <AppContainer />
     </CalendarProvider>
   );
-};
+}
 
 export default App;

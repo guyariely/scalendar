@@ -3,7 +3,7 @@ import CalendarContext from "../../context/CalendarContext";
 import Day from "../Day/Day";
 import { StyledCalendar } from "./style";
 
-const Calender = props => {
+function Calender() {
   const { tickets, columns } = useContext(CalendarContext);
 
   const days = new Array(7).fill(0).map((_, index) => index + 1);
@@ -21,6 +21,6 @@ const Calender = props => {
       <div></div>
     </StyledCalendar>
   );
-};
+}
 
 export default Calender;

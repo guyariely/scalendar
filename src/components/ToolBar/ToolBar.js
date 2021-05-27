@@ -4,7 +4,7 @@ import { useTheme } from "../../hooks/hooks";
 import NewTicketForm from "../NewTicketForm/NewTicketForm";
 import { StyledToolbar, ToggleThemeButton, ClearTicketsButton } from "./style";
 
-const ToolBar = props => {
+function ToolBar() {
   const { addNewTicket, clearTickets } = useContext(CalendarContext);
   const toggleTheme = useTheme();
 
@@ -23,6 +23,6 @@ const ToolBar = props => {
       </ClearTicketsButton>
     </StyledToolbar>
   );
-};
+}
 
 export default ToolBar;

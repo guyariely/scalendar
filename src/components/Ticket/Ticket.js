@@ -5,7 +5,7 @@ import { StyledTicket, Container, DeleteButton } from "./style";
 import { Draggable } from "react-beautiful-dnd";
 import CalendarContext from "../../context/CalendarContext";
 
-const Ticket = props => {
+function Ticket(props) {
   const { id, theme } = props.ticket;
 
   const [isEditMode, setIsEditMode] = useState(false);
@@ -51,6 +51,6 @@ const Ticket = props => {
       </Draggable>
     </ClickOutsideWrapper>
   );
-};
+}
 
 export default Ticket;
