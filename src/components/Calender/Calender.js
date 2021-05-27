@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import CalendarContext from "../../context/CalendarContext";
 import Day from "../Day/Day";
 import { StyledCalendar } from "./style";
 
 const Calender = props => {
-  const { tickets, columns, deleteTicket, updateDescription } = props;
+  const { tickets, columns } = useContext(CalendarContext);
+
   const days = new Array(7).fill(0).map((_, index) => index + 1);
 
   return (
@@ -13,14 +15,7 @@ const Calender = props => {
         const columnTickets = ticketIds.map(id => tickets[id]);
 
         return (
-          <Day
-            key={id}
-            name={name}
-            dayIndex={id}
-            tickets={columnTickets}
-            deleteTicket={deleteTicket}
-            updateDescription={updateDescription}
-          />
+          <Day key={id} name={name} dayIndex={id} tickets={columnTickets} />
         );
       })}
       <div></div>

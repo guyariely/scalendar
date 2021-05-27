@@ -1,48 +1,40 @@
-import React from "react";
+import React, { useContext } from "react";
 import Sidebar from "../Sidebar/Sidebar";
 import Calender from "../Calender/Calender";
 import ToolBar from "../ToolBar/ToolBar";
-import { useTickets } from "../../hooks/hooks";
 import { DragDropContext } from "react-beautiful-dnd";
 import { StyledApp, Container, Main } from "./style";
+import CalendarContext, {
+  CalendarProvider,
+} from "../../context/CalendarContext";
 
-const App = () => {
-  const {
-    tickets,
-    columns,
-    deleteTicket,
-    addNewTicket,
-    moveTicket,
-    clearTickets,
-    updateDescription,
-  } = useTickets();
+const AppContainer = () => {
+  const { moveTicket } = useContext(CalendarContext);
+
+  function handleDragEnd({ destination, source, draggableId }) {
+    moveTicket(draggableId, source, destination);
+  }
 
   return (
     <StyledApp>
-      <DragDropContext
-        onDragEnd={({ destination, source, draggableId }) =>
-          moveTicket(draggableId, source, destination)
-        }
-      >
+      <DragDropContext onDragEnd={e => handleDragEnd(e)}>
         <Container>
-          <Sidebar
-            tickets={tickets}
-            columns={columns}
-            deleteTicket={deleteTicket}
-            updateDescription={updateDescription}
-          />
+          <Sidebar />
           <Main>
-            <ToolBar addNewTicket={addNewTicket} clearTickets={clearTickets} />
-            <Calender
-              tickets={tickets}
-              columns={columns}
-              deleteTicket={deleteTicket}
-              updateDescription={updateDescription}
-            />
+            <ToolBar />
+            <Calender />
           </Main>
         </Container>
       </DragDropContext>
     </StyledApp>
+  );
+};
+
+const App = () => {
+  return (
+    <CalendarProvider>
+      <AppContainer />
+    </CalendarProvider>
   );
 };
 

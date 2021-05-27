@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import Ticket from "../Ticket/Ticket";
 import { StyledSidebar, Logo, Container } from "./style";
 import { Droppable } from "react-beautiful-dnd";
+import CalendarContext from "../../context/CalendarContext";
 
 const Sidebar = props => {
-  const { columns, tickets, deleteTicket, updateDescription } = props;
+  const { columns, tickets } = useContext(CalendarContext);
   const columnTickets = columns["0"].ticketIds.map(id => tickets[id]);
 
   return (
@@ -19,8 +20,6 @@ const Sidebar = props => {
                 ticket={ticket}
                 ticketIndex={index}
                 column={0}
-                deleteTicket={deleteTicket}
-                updateDescription={updateDescription}
               />
             ))}
             {provided.placeholder}

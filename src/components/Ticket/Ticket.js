@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import ClickOutsideWrapper from "react-click-outside-wrapper";
 import EditableDescription from "../EditableDescription/EditableDescription";
 import { StyledTicket, Container, DeleteButton } from "./style";
 import { Draggable } from "react-beautiful-dnd";
+import CalendarContext from "../../context/CalendarContext";
 
 const Ticket = props => {
   const { id, theme } = props.ticket;
@@ -10,9 +11,11 @@ const Ticket = props => {
   const [isEditMode, setIsEditMode] = useState(false);
   const [description, setDescription] = useState(props.ticket.description);
 
-  function updateDescription() {
+  const { updateDescription, deleteTicket } = useContext(CalendarContext);
+
+  function onSubmitEditableDescription() {
     setIsEditMode(false);
-    props.updateDescription(id, description);
+    updateDescription(id, description);
   }
 
   return (
@@ -31,12 +34,12 @@ const Ticket = props => {
               <EditableDescription
                 description={description}
                 onChange={e => setDescription(e.target.value)}
-                onSubmit={updateDescription}
+                onSubmit={onSubmitEditableDescription}
                 isEditMode={isEditMode}
                 theme={theme}
               />
               <DeleteButton
-                onClick={() => props.deleteTicket(props.column, id)}
+                onClick={() => deleteTicket(props.column, id)}
                 theme={theme}
               >
                 ✕

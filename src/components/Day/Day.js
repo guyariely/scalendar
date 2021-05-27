@@ -4,7 +4,7 @@ import { StyledDay, Title, Container } from "./style";
 import { Droppable } from "react-beautiful-dnd";
 
 const Day = props => {
-  const { name, dayIndex, tickets, deleteTicket, updateDescription } = props;
+  const { name, dayIndex, tickets } = props;
 
   const isActiveDay = new Date().getDay() === Number(dayIndex - 1);
 
@@ -24,8 +24,6 @@ const Day = props => {
                 ticket={ticket}
                 ticketIndex={index}
                 column={dayIndex}
-                deleteTicket={deleteTicket}
-                updateDescription={updateDescription}
               />
             ))}
             {provided.placeholder}

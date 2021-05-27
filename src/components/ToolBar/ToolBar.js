@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import CalendarContext from "../../context/CalendarContext";
 import { useTheme } from "../../hooks/hooks";
 import NewTicketForm from "../NewTicketForm/NewTicketForm";
 import { StyledToolbar, ToggleThemeButton, ClearTicketsButton } from "./style";
 
-const ToolBar = ({ addNewTicket, clearTickets }) => {
+const ToolBar = props => {
+  const { addNewTicket, clearTickets } = useContext(CalendarContext);
   const toggleTheme = useTheme();
 
   return (

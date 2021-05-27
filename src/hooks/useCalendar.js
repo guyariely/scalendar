@@ -3,7 +3,7 @@ import initialData from "../initalData";
 import { randomColor, moveElement } from "../Utils/utils";
 import uniqid from "uniqid";
 
-function useTickets() {
+function useCalendar() {
   const [tickets, setTickets] = useState(initialData.tickets);
   const [columns, setColumns] = useState(initialData.columns);
 
@@ -158,4 +158,4 @@ function useTickets() {
   };
 }
 
-export { useTickets };
+export { useCalendar };
