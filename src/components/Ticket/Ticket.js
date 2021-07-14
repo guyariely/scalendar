@@ -1,9 +1,10 @@
 import React, { useState, useContext } from "react";
 import ClickOutsideWrapper from "react-click-outside-wrapper";
 import EditableDescription from "../EditableDescription/EditableDescription";
-import { StyledTicket, Container, DeleteButton } from "./style";
+import { StyledTicket, Container, MainContainer, DeleteButton } from "./style";
 import { Draggable } from "react-beautiful-dnd";
 import CalendarContext from "../../context/CalendarContext";
+import Tags from "../Tags/Tags";
 
 function Ticket(props) {
   const { id, theme } = props.ticket;
@@ -31,19 +32,22 @@ function Ticket(props) {
             onDoubleClick={() => setIsEditMode(true)}
           >
             <Container isDragging={snapshot.isDragging} theme={theme}>
-              <EditableDescription
-                description={description}
-                onChange={e => setDescription(e.target.value)}
-                onSubmit={onSubmitEditableDescription}
-                isEditMode={isEditMode}
-                theme={theme}
-              />
-              <DeleteButton
-                onClick={() => deleteTicket(props.column, id)}
-                theme={theme}
-              >
-                ✕
-              </DeleteButton>
+              <MainContainer>
+                <EditableDescription
+                  description={description}
+                  onChange={e => setDescription(e.target.value)}
+                  onSubmit={onSubmitEditableDescription}
+                  isEditMode={isEditMode}
+                  theme={theme}
+                />
+                <DeleteButton
+                  onClick={() => deleteTicket(props.column, id)}
+                  theme={theme}
+                >
+                  ✕
+                </DeleteButton>
+              </MainContainer>
+              <Tags theme={theme} />
             </Container>
             {provided.placeholder}
           </StyledTicket>
