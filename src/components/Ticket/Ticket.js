@@ -20,7 +20,7 @@ function Ticket(props) {
 
   return (
     <ClickOutsideWrapper
-      onClickOutside={() => isEditMode && updateDescription()}
+      onClickOutside={() => isEditMode && onSubmitEditableDescription()}
     >
       <Draggable draggableId={id} index={props.ticketIndex}>
         {(provided, snapshot) => (
