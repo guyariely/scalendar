@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import Sidebar from "../Sidebar/Sidebar";
+import Dock from "../Dock/Dock";
 import Calender from "../Calender/Calender";
 import ToolBar from "../ToolBar/ToolBar";
 import { DragDropContext } from "react-beautiful-dnd";
@@ -19,7 +19,7 @@ function AppContainer() {
     <StyledApp>
       <DragDropContext onDragEnd={e => handleDragEnd(e)}>
         <Container>
-          <Sidebar />
+          <Dock />
           <Main>
             <ToolBar />
             <Calender />
