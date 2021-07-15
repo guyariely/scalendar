@@ -4,16 +4,19 @@ const initialData = {
       id: "task-1",
       description: "Create your first task!",
       theme: "orange",
+      tags: {},
     },
     "task-2": {
       id: "task-2",
       description: "Organize your tasks throughout the week",
       theme: "blue",
+      tags: {},
     },
     "task-3": {
       id: "task-3",
       description: "Press the moon button to toggle dark mode",
       theme: "red",
+      tags: {},
     },
   },
   columns: {

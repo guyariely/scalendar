@@ -17,4 +17,8 @@ export const StyledTag = styled.div`
   font-weight: bold;
 `;
 
+export const Link = styled.a`
+  color: ${({ theme }) => `var(--color-${theme}-background)`};
+`;
+
 export const TagContent = styled.p``;

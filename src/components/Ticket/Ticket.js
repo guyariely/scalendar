@@ -7,7 +7,7 @@ import CalendarContext from "../../context/CalendarContext";
 import Tags from "../Tags/Tags";
 
 function Ticket(props) {
-  const { id, theme } = props.ticket;
+  const { id, theme, tags } = props.ticket;
 
   const [isEditMode, setIsEditMode] = useState(false);
   const [description, setDescription] = useState(props.ticket.description);
@@ -21,7 +21,7 @@ function Ticket(props) {
 
   return (
     <ClickOutsideWrapper
-      onClickOutside={() => isEditMode && updateDescription()}
+      onClickOutside={() => isEditMode && onSubmitEditableDescription()}
     >
       <Draggable draggableId={id} index={props.ticketIndex}>
         {(provided, snapshot) => (
@@ -47,7 +47,9 @@ function Ticket(props) {
                   ✕
                 </DeleteButton>
               </MainContainer>
-              <Tags theme={theme} />
+              {Object.keys(tags).length > 0 && (
+                <Tags theme={theme} tags={tags} />
+              )}
             </Container>
             {provided.placeholder}
           </StyledTicket>

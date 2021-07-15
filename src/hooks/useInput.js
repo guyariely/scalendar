@@ -5,7 +5,8 @@ function useInput(initialState) {
 
   const onChangeInput = e => setInput(e.target.value);
 
-  function onSubmitInput(submitCallback) {
+  function onSubmitInput(e, submitCallback) {
+    e.preventDefault();
     if (input) {
       submitCallback(input);
       setInput("");
