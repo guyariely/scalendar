@@ -4,10 +4,14 @@ export const StyledTicket = styled.div`
   margin: 10px;
 `;
 
-export const Container = styled.div`
+export const MainContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 10px 20px;
+  padding: 0 20px;
+`;
+
+export const Container = styled.div`
+  padding: 10px 0;
   border-radius: 20px;
   word-break: break-word;
   background-color: ${({ theme }) => `var(--color-${theme}-background)`};

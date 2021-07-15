@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import initialData from "../initalData";
-import { randomColor, moveElement } from "../Utils/utils";
+import {
+  randomColor,
+  moveElement,
+  extractParams,
+  getColumnFromParam,
+} from "../Utils";
 import uniqid from "uniqid";
 
 function useCalendar() {
@@ -30,18 +35,29 @@ function useCalendar() {
 
   const addNewTicket = newTicketInput => {
     const newId = uniqid();
+    const [parsedInput, params] = extractParams(newTicketInput);
 
     setTickets(tickets => ({
       ...tickets,
       [newId]: {
         id: newId,
-        description: newTicketInput,
+        description: parsedInput,
         theme: randomColor(),
+        tags: params,
       },
     }));
+
+    const column = getColumnFromParam(params["day"]);
+    console.log(column);
+
     setColumns(columns => {
-      columns[0].ticketIds.push(newId);
-      return columns;
+      const updatedColumn = {
+        [column]: {
+          ...columns[column],
+          ticketIds: [...columns[column].ticketIds, newId],
+        },
+      };
+      return Object.assign({}, columns, updatedColumn);
     });
   };
 

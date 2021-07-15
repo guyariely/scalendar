@@ -14,7 +14,7 @@ function NewTicketForm({ addNewTicket }) {
         placeholder="Add new ticket ..."
       />
       <SubmitButton
-        onClick={() => onSubmitInput(addNewTicket)}
+        onClick={e => onSubmitInput(e, addNewTicket)}
         disabled={!input}
       >
         +

@@ -1,12 +1,13 @@
 import React, { useState, useContext } from "react";
 import ClickOutsideWrapper from "react-click-outside-wrapper";
 import EditableDescription from "../EditableDescription/EditableDescription";
-import { StyledTicket, Container, DeleteButton } from "./style";
+import { StyledTicket, Container, MainContainer, DeleteButton } from "./style";
 import { Draggable } from "react-beautiful-dnd";
 import CalendarContext from "../../context/CalendarContext";
+import Tags from "../Tags/Tags";
 
 function Ticket(props) {
-  const { id, theme } = props.ticket;
+  const { id, theme, tags } = props.ticket;
 
   const [isEditMode, setIsEditMode] = useState(false);
   const [description, setDescription] = useState(props.ticket.description);
@@ -31,19 +32,24 @@ function Ticket(props) {
             onDoubleClick={() => setIsEditMode(true)}
           >
             <Container isDragging={snapshot.isDragging} theme={theme}>
-              <EditableDescription
-                description={description}
-                onChange={e => setDescription(e.target.value)}
-                onSubmit={onSubmitEditableDescription}
-                isEditMode={isEditMode}
-                theme={theme}
-              />
-              <DeleteButton
-                onClick={() => deleteTicket(props.column, id)}
-                theme={theme}
-              >
-                ✕
-              </DeleteButton>
+              <MainContainer>
+                <EditableDescription
+                  description={description}
+                  onChange={e => setDescription(e.target.value)}
+                  onSubmit={onSubmitEditableDescription}
+                  isEditMode={isEditMode}
+                  theme={theme}
+                />
+                <DeleteButton
+                  onClick={() => deleteTicket(props.column, id)}
+                  theme={theme}
+                >
+                  ✕
+                </DeleteButton>
+              </MainContainer>
+              {Object.keys(tags).length > 0 && (
+                <Tags theme={theme} tags={tags} />
+              )}
             </Container>
             {provided.placeholder}
           </StyledTicket>
