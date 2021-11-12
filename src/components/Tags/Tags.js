@@ -57,7 +57,6 @@ const tagTypes = ["time", "link", "urgent"];
 
 function Tags({ theme, tags }) {
   if (tagTypes.every(tag => !tags[tag])) return null;
-  console.log(tags);
 
   return (
     <StyledTags>

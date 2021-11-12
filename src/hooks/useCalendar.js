@@ -48,7 +48,6 @@ function useCalendar() {
     }));
 
     const column = getColumnFromParam(params["day"]);
-    console.log(column);
 
     setColumns(columns => {
       const updatedColumn = {
