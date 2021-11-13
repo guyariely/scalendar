@@ -13,7 +13,7 @@ const getUser = () =>
 function AuthProvider(props) {
   /* check if user is already logged in */
 
-  const { isLoading, error, data } = useQuery("authData", getUser);
+  const { isLoading, data } = useQuery("authData", getUser);
 
   if (isLoading) {
     return <p>Loading ...</p>;
