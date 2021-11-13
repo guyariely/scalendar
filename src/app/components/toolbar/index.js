@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import CalendarContext from "../../context/CalendarContext";
-import { useTheme } from "../../hooks/hooks";
-import NewTicketForm from "../NewTicketForm/NewTicketForm";
+import CalendarContext from "../../../context/CalendarContext";
+import { useTheme } from "../../../hooks";
+import NewTicketForm from "../new-ticket-form";
 import { StyledToolbar, ToggleThemeButton, ClearTicketsButton } from "./style";
 
 function ToolBar() {

@@ -5,7 +5,7 @@ import {
   moveElement,
   extractParams,
   getColumnFromParam,
-} from "../Utils";
+} from "../utils";
 import uniqid from "uniqid";
 
 function useCalendar() {

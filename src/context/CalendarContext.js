@@ -1,5 +1,5 @@
 import React, { createContext } from "react";
-import { useCalendar } from "../hooks/hooks";
+import { useCalendar } from "../hooks";
 
 const CalendarContext = createContext();
 

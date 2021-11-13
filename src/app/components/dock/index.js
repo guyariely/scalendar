@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import Ticket from "../Ticket/Ticket";
+import Ticket from "../ticket";
 import { StyledDock, Logo, Container } from "./style";
 import { Droppable } from "react-beautiful-dnd";
-import CalendarContext from "../../context/CalendarContext";
+import CalendarContext from "../../../context/CalendarContext";
 
 function Dock() {
   const { columns, tickets } = useContext(CalendarContext);

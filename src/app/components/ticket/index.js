@@ -1,10 +1,10 @@
 import React, { useState, useContext } from "react";
 import ClickOutsideWrapper from "react-click-outside-wrapper";
-import EditableDescription from "../EditableDescription/EditableDescription";
+import EditableDescription from "../editable-description";
 import { StyledTicket, Container, MainContainer, DeleteButton } from "./style";
 import { Draggable } from "react-beautiful-dnd";
-import CalendarContext from "../../context/CalendarContext";
-import Tags from "../Tags/Tags";
+import CalendarContext from "../../../context/CalendarContext";
+import Tags from "../tags";
 
 function Ticket(props) {
   const { id, theme, tags } = props.ticket;

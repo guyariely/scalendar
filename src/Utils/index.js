@@ -1,4 +1,4 @@
-export { extractParams } from "./extractParams";
-export { getColumnFromParam } from "./getColumnFromParam";
-export { moveElement } from "./moveElement";
-export { randomColor } from "./randomColor";
+export * from "./extract-params";
+export * from "./get-column-from-param";
+export * from "./move-element";
+export * from "./random-color";

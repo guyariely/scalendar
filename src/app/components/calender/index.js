@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import CalendarContext from "../../context/CalendarContext";
-import Day from "../Day/Day";
+import CalendarContext from "../../../context/CalendarContext";
+import Day from "../day";
 import { StyledCalendar } from "./style";
 
 function Calender() {

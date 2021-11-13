@@ -1,5 +1,5 @@
 import React from "react";
-import Ticket from "../Ticket/Ticket";
+import Ticket from "../ticket";
 import { StyledDay, Title, Container } from "./style";
 import { Droppable } from "react-beautiful-dnd";
 

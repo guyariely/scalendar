@@ -1,12 +1,10 @@
 import React, { useContext } from "react";
-import Dock from "../Dock/Dock";
-import Calender from "../Calender/Calender";
-import ToolBar from "../ToolBar/ToolBar";
+import Dock from "./components/dock";
+import Calender from "./components/calender";
+import ToolBar from "./components/toolbar";
 import { DragDropContext } from "react-beautiful-dnd";
 import { StyledApp, Container, Main } from "./style";
-import CalendarContext, {
-  CalendarProvider,
-} from "../../context/CalendarContext";
+import CalendarContext, { CalendarProvider } from "../context/CalendarContext";
 
 function AppContainer() {
   const { moveTicket } = useContext(CalendarContext);
