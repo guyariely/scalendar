@@ -1,7 +1,10 @@
-body {
+body,
+html,
+#root {
   font-family: "Nunito", "Segoe UI", Helvetica, Arial, sans-serif;
   color: var(--color-text);
   margin: 0;
+  height: 100%;
 }
 
 h1,

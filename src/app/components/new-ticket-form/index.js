@@ -1,6 +1,7 @@
 import React from "react";
 import { useInput } from "../../../hooks";
-import { Form, Input, SubmitButton } from "./style";
+import { Form, SubmitButton } from "./style";
+import Input from "../input";
 
 function NewTicketForm({ addNewTicket }) {
   const { input, onChangeInput, onSubmitInput } = useInput("");

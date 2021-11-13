@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Dock from "./components/dock";
 import Calender from "./components/calender";
 import ToolBar from "./components/toolbar";
@@ -6,6 +6,8 @@ import { DragDropContext } from "react-beautiful-dnd";
 import { StyledApp, Container, Main } from "./style";
 import CalendarContext, { CalendarProvider } from "../context/CalendarContext";
 import { useUser } from "../context/user";
+import UnauthenticatedApp from "./unauthenticated-app";
+import { Routes, Route } from "react-router-dom";
 
 function Layout() {
   const { moveTicket } = useContext(CalendarContext);
@@ -31,18 +33,25 @@ function Layout() {
 
 function AuthenticatedApp() {
   return (
-    <CalendarProvider>
-      <Layout />
-    </CalendarProvider>
+    <Routes>
+      <Route
+        path="*"
+        element={
+          <CalendarProvider>
+            <Layout />
+          </CalendarProvider>
+        }
+      />
+    </Routes>
   );
-}
-
-function UnauthenticatedApp() {
-  return <p>Log in</p>;
 }
 
 function App() {
   const user = useUser();
+
+  useEffect(() => {
+    window.history.replaceState(null, null, "/");
+  }, [user]);
 
   return user ? <AuthenticatedApp /> : <UnauthenticatedApp />;
 }

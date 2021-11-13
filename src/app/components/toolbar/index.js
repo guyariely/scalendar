@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import CalendarContext from "../../../context/CalendarContext";
 import { useTheme } from "../../../hooks";
 import NewTicketForm from "../new-ticket-form";
-import { StyledToolbar, ToggleThemeButton, ClearTicketsButton } from "./style";
+import { StyledToolbar, ToggleThemeButton, Button } from "./style";
+import { signOut } from "../../../services/auth-api";
 
 function ToolBar() {
   const { addNewTicket, clearTickets } = useContext(CalendarContext);
@@ -11,16 +12,21 @@ function ToolBar() {
   return (
     <StyledToolbar>
       <NewTicketForm addNewTicket={addNewTicket} />
-      <ToggleThemeButton onClick={() => toggleTheme()}>
+      <ToggleThemeButton onClick={toggleTheme}>
         <span role="img" aria-label="toggle-theme">
           🌓
         </span>
       </ToggleThemeButton>
-      <ClearTicketsButton onClick={() => clearTickets()}>
+      <Button onClick={clearTickets}>
         <span role="img" aria-label="toggle-theme">
           🗑
         </span>
-      </ClearTicketsButton>
+      </Button>
+      <Button onClick={signOut}>
+        <span role="img" aria-label="sign-out">
+          🚪
+        </span>
+      </Button>
     </StyledToolbar>
   );
 }

@@ -1,34 +1,21 @@
 import * as React from "react";
-import { useQuery } from "react-query";
+import * as firebase from "../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const AuthContext = React.createContext();
 
-const sleep = time => new Promise(resolve => setTimeout(resolve, time));
-
-const getUser = () =>
-  sleep(1000).then(() => ({
-    user: "elmo",
-  }));
-
 function AuthProvider(props) {
-  /* check if user is already logged in */
+  const [user, loading, error] = useAuthState(firebase.auth);
 
-  const { isLoading, data } = useQuery("authData", getUser);
-
-  if (isLoading) {
+  if (loading) {
     return <p>Loading ...</p>;
   }
 
-  const login = () => {}; // make a login request
-  const register = () => {}; // register the user
-  const logout = () => {}; // clear the token in localStorage and the user data
+  if (error) {
+    return <p style={{ color: "red" }}>{error.message}</p>;
+  }
 
-  return (
-    <AuthContext.Provider
-      value={{ data, login, logout, register }}
-      {...props}
-    />
-  );
+  return <AuthContext.Provider value={{ data: { user } }} {...props} />;
 }
 
 const useAuth = () => React.useContext(AuthContext);

@@ -18,8 +18,6 @@ export const Button = styled.button`
   }
 `;
 
-export const ClearTicketsButton = styled(Button)``;
-
 export const ToggleThemeButton = styled(Button)`
   margin-left: auto;
 `;
