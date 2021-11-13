@@ -1,10 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./app";
+import AppProviders from "./context";
 import "./styles/setting.css";
 import "./styles/base.css";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <AppProviders>
+    <App />
+  </AppProviders>,
+  document.getElementById("root")
+);
 
 serviceWorkerRegistration.register();
