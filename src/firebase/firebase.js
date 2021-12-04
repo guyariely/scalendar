@@ -28,6 +28,7 @@ if (!firebase.apps.length) {
 
 const auth = firebase.auth();
 const firestore = firebase.firestore();
+const { FieldValue } = firebase.firestore;
 
 export default firebase;
-export { auth, firestore };
+export { auth, firestore, FieldValue };
