@@ -1,11 +1,11 @@
-import { useMutation, useQuery, useQueryClient } from "react-query";
+import { useQuery } from "react-query";
 import { CLEARED_COLUMNS } from "../../consts/initial-data";
 import { useUser } from "../../context/user";
 import * as calendarApi from "../../services/calendar-api";
 import { filterKeys } from "../../utils/objects";
+import { useOptimisticUpdate } from "./use-optimistic-update";
 
-// TODO:
-// 2. better objects utils
+// TODO: better objects utils (specifically deep updates)
 
 const calendarKeys = {
   all: "calendar",
@@ -22,42 +22,6 @@ export function useCalendar() {
   const { tickets, columns } = calendar;
 
   return { tickets, columns, ...queryResult };
-}
-
-function useOptimisticUpdate(config) {
-  const queryClient = useQueryClient();
-
-  const { key } = typeof config === "function" ? config({}) : config;
-
-  return useMutation(
-    mutationArgs => {
-      const _mutationArgs =
-        typeof config === "function" ? config(mutationArgs) : config;
-      _mutationArgs.mutation();
-    },
-    {
-      onMutate: async mutationArgs => {
-        await queryClient.cancelQueries(key);
-        const previousValue = queryClient.getQueryData(key);
-
-        const _mutationArgs =
-          typeof config === "function" ? config(mutationArgs) : config;
-
-        queryClient.setQueryData(key, currentValue =>
-          _mutationArgs.optimisticUpdate(currentValue)
-        );
-
-        return previousValue;
-      },
-      onError: (err, _, previousValue) => {
-        console.error(err);
-        queryClient.setQueryData(key, previousValue);
-      },
-      onSettled: () => {
-        queryClient.invalidateQueries(key);
-      },
-    }
-  );
 }
 
 export const useAddTicket = () => {
