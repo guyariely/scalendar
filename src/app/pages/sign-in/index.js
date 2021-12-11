@@ -1,18 +1,21 @@
 import React, { useState } from "react";
-import { useSignUp } from "../../../../hooks/auth/use-sign-up";
+import { BUTTON_TYPE } from "../../components/button/consts";
 import {
+  Buttons,
   SignInForm,
   StyledButton,
   Title,
   StyledInput,
   Container,
 } from "./style";
+import { Link } from "react-router-dom";
+import { useSignIn } from "../../hooks/auth/use-sign-in";
 
-function SignUpPage() {
+function SignInPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { signUp, loading, error, data } = useSignUp(email, password);
+  const { signIn, loading, error } = useSignIn(email, password);
 
   if (loading) {
     return <p>Loading ...</p>;
@@ -20,7 +23,7 @@ function SignUpPage() {
 
   return (
     <Container>
-      <Title>Sign Up</Title>
+      <Title>Sign In</Title>
       <SignInForm>
         <StyledInput
           value={email}
@@ -35,10 +38,17 @@ function SignUpPage() {
           type="password"
         />
       </SignInForm>
-      <StyledButton onClick={signUp}>Sign Up</StyledButton>
+      <Buttons>
+        <StyledButton disabled={!email || !password} onClick={signIn}>
+          Sign In
+        </StyledButton>
+        <Link to="/sign-up">
+          <StyledButton type={BUTTON_TYPE.SECONDARY}>Sign Up</StyledButton>
+        </Link>
+      </Buttons>
       {error && <p style={{ color: "red" }}>{error.message}</p>}
     </Container>
   );
 }
 
-export default SignUpPage;
+export default SignInPage;

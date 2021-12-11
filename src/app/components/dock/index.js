@@ -1,12 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import Ticket from "../ticket";
 import { StyledDock, Logo, Container } from "./style";
 import { Droppable } from "react-beautiful-dnd";
-import CalendarContext from "../../../context/CalendarContext";
 
-function Dock() {
-  const { columns, tickets } = useContext(CalendarContext);
-  const columnTickets = columns["0"].ticketIds.map(id => tickets[id]);
+function Dock({ columns, tickets }) {
+  const dockTickets = columns["0"].ticketIds.map(id => tickets[id]);
 
   return (
     <StyledDock>
@@ -14,7 +12,7 @@ function Dock() {
       <Droppable droppableId={"0"}>
         {provided => (
           <Container ref={provided.innerRef} {...provided.droppableProps}>
-            {columnTickets.map((ticket, index) => (
+            {dockTickets.map((ticket, index) => (
               <Ticket
                 key={ticket.id}
                 ticket={ticket}

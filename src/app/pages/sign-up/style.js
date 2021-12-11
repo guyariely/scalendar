@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Button, Input } from "../components";
+import { Button, Input } from "../../components";
 
 export const Container = styled.div`
   padding: 20px;
@@ -27,10 +27,6 @@ export const SignInForm = styled.form`
 
 export const StyledInput = styled(Input)`
   margin: 10px 0;
-`;
-
-export const Buttons = styled.div`
-  display: flex;
 `;
 
 export const StyledButton = styled(Button)`

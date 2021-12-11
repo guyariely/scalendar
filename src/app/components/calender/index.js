@@ -1,16 +1,12 @@
-import React, { useContext } from "react";
-import CalendarContext from "../../../context/CalendarContext";
+import React from "react";
 import Day from "../day";
 import { StyledCalendar } from "./style";
+import { DAYS } from "./consts";
 
-function Calender() {
-  const { tickets, columns } = useContext(CalendarContext);
-
-  const days = new Array(7).fill(0).map((_, index) => index + 1);
-
+function Calender({ tickets, columns }) {
   return (
     <StyledCalendar>
-      {days.map(columnId => {
+      {DAYS.map(columnId => {
         const { id, name, ticketIds } = columns[columnId];
         const columnTickets = ticketIds.map(id => tickets[id]);
 

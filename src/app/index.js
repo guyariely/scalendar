@@ -1,47 +1,21 @@
-import React, { useContext, useEffect } from "react";
-import Dock from "./components/dock";
-import Calender from "./components/calender";
-import ToolBar from "./components/toolbar";
-import { DragDropContext } from "react-beautiful-dnd";
-import { StyledApp, Container, Main } from "./style";
-import CalendarContext, { CalendarProvider } from "../context/CalendarContext";
-import { useUser } from "../context/user";
-import UnauthenticatedApp from "./unauthenticated-app";
+import React, { useEffect } from "react";
+import { useUser } from "./context/user";
 import { Routes, Route } from "react-router-dom";
+import { SignInPage, SignUpPage, HomePage } from "./pages";
 
-function Layout() {
-  const { moveTicket } = useContext(CalendarContext);
-
-  function handleDragEnd({ destination, source, draggableId }) {
-    moveTicket(draggableId, source, destination);
-  }
-
+function UnauthenticatedApp() {
   return (
-    <StyledApp>
-      <DragDropContext onDragEnd={e => handleDragEnd(e)}>
-        <Container>
-          <Dock />
-          <Main>
-            <ToolBar />
-            <Calender />
-          </Main>
-        </Container>
-      </DragDropContext>
-    </StyledApp>
+    <Routes>
+      <Route path="/" element={<SignInPage />} />
+      <Route path="/sign-up" element={<SignUpPage />} />
+    </Routes>
   );
 }
 
 function AuthenticatedApp() {
   return (
     <Routes>
-      <Route
-        path="*"
-        element={
-          <CalendarProvider>
-            <Layout />
-          </CalendarProvider>
-        }
-      />
+      <Route path="*" element={<HomePage />} />
     </Routes>
   );
 }

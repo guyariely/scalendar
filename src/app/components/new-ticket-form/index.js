@@ -1,5 +1,5 @@
 import React from "react";
-import { useInput } from "../../../hooks";
+import { useInput } from "../../hooks";
 import { Form, SubmitButton } from "./style";
 import Input from "../input";
 

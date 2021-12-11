@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./app";
-import AppProviders from "./context";
+import AppProviders from "./app/context";
 import "./styles/setting.css";
 import "./styles/base.css";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";

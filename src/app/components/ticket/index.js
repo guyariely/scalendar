@@ -1,29 +1,43 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import ClickOutsideWrapper from "react-click-outside-wrapper";
 import EditableDescription from "../editable-description";
 import { StyledTicket, Container, MainContainer, DeleteButton } from "./style";
 import { Draggable } from "react-beautiful-dnd";
-import CalendarContext from "../../../context/CalendarContext";
 import Tags from "../tags";
+import { useDeleteTicket, useUpdateTicket } from "../../hooks/api";
 
-function Ticket(props) {
-  const { id, theme, tags } = props.ticket;
+function Ticket({ ticket, ticketIndex, column }) {
+  const { id, theme, tags } = ticket;
 
   const [isEditMode, setIsEditMode] = useState(false);
-  const [description, setDescription] = useState(props.ticket.description);
+  const [description, setDescription] = useState(ticket.description);
 
-  const { updateDescription, deleteTicket } = useContext(CalendarContext);
+  const updateTicket = useUpdateTicket();
+  const deleteTicket = useDeleteTicket();
 
   function onSubmitEditableDescription() {
     setIsEditMode(false);
-    updateDescription(id, description);
+
+    updateTicket.mutate({
+      ticketId: id,
+      updates: {
+        description,
+      },
+    });
+  }
+
+  function handleDeleteTicket() {
+    deleteTicket.mutate({
+      ticketId: id,
+      columnId: column,
+    });
   }
 
   return (
     <ClickOutsideWrapper
       onClickOutside={() => isEditMode && onSubmitEditableDescription()}
     >
-      <Draggable draggableId={id} index={props.ticketIndex}>
+      <Draggable draggableId={id} index={ticketIndex}>
         {(provided, snapshot) => (
           <StyledTicket
             {...provided.draggableProps}
@@ -40,10 +54,7 @@ function Ticket(props) {
                   isEditMode={isEditMode}
                   theme={theme}
                 />
-                <DeleteButton
-                  onClick={() => deleteTicket(props.column, id)}
-                  theme={theme}
-                >
+                <DeleteButton onClick={handleDeleteTicket} theme={theme}>
                   ✕
                 </DeleteButton>
               </MainContainer>

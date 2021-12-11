@@ -8,6 +8,7 @@ export async function getCalendar(userId) {
 }
 
 export function addTicket(userId, ticket, column) {
+  console.log({ userId, ticket, column });
   const updates = {
     [`calendar.tickets.${ticket.id}`]: ticket,
     [`calendar.columns.${column}.ticketIds`]: FieldValue.arrayUnion(ticket.id),
