@@ -2,10 +2,10 @@ import React from "react";
 import { useTheme } from "../../hooks";
 import NewTicketForm from "../new-ticket-form";
 import { StyledToolbar, ToggleThemeButton, Button } from "./style";
-import { signOut } from "../../services/auth-api";
+import authApi from "../../services/auth";
 import { extractParams, getColumnFromParam, randomColor } from "../../utils";
 import uniqid from "uniqid";
-import { useAddTicket, useClearTickets } from "../../hooks/api";
+import { useAddTicket, useClearTickets } from "../../services/calendar";
 
 function ToolBar() {
   const clearTickets = useClearTickets();
@@ -41,7 +41,7 @@ function ToolBar() {
           🗑
         </span>
       </Button>
-      <Button onClick={signOut}>
+      <Button onClick={authApi.signOut}>
         <span role="img" aria-label="sign-out">
           🚪
         </span>

@@ -1,4 +1,5 @@
 import { useMutation, useQueryClient } from "react-query";
+import { toast } from "react-toastify";
 
 export function useOptimisticUpdate(config) {
   const queryClient = useQueryClient();
@@ -26,6 +27,7 @@ export function useOptimisticUpdate(config) {
         return previousValue;
       },
       onError: (err, _, previousValue) => {
+        toast.error(err.message);
         console.error(err);
         queryClient.setQueryData(key, previousValue);
       },

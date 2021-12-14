@@ -4,7 +4,7 @@ import EditableDescription from "../editable-description";
 import { StyledTicket, Container, MainContainer, DeleteButton } from "./style";
 import { Draggable } from "react-beautiful-dnd";
 import Tags from "../tags";
-import { useDeleteTicket, useUpdateTicket } from "../../hooks/api";
+import { useDeleteTicket, useUpdateTicket } from "../../services/calendar";
 
 function Ticket({ ticket, ticketIndex, column }) {
   const { id, theme, tags } = ticket;

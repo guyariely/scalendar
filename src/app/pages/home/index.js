@@ -4,7 +4,7 @@ import Calender from "../../components/calender";
 import ToolBar from "../../components/toolbar";
 import { DragDropContext } from "react-beautiful-dnd";
 import { StyledApp, Container, Main } from "./style";
-import { useCalendar, useUpdateColumns } from "../../hooks/api";
+import { useCalendar, useUpdateColumns } from "../../services/calendar";
 import { moveElement } from "../../utils";
 
 function HomePage() {

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSignUp } from "../../hooks/auth/use-sign-up";
+import { useSignUp } from "../../services/auth";
 import {
   SignInForm,
   StyledButton,

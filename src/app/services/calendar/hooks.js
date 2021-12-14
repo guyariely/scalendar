@@ -1,9 +1,9 @@
 import { useQuery } from "react-query";
 import { CLEARED_COLUMNS } from "../../consts/initial-data";
 import { useUser } from "../../context/user";
-import * as calendarApi from "../../services/calendar-api";
+import calendarApi from "./api";
 import { filterKeys } from "../../utils/objects";
-import { useOptimisticUpdate } from "./use-optimistic-update";
+import { useOptimisticUpdate } from "../../hooks";
 
 // TODO: better objects utils (specifically deep updates)
 
