@@ -6,6 +6,7 @@ import { DragDropContext } from "react-beautiful-dnd";
 import { StyledApp, Container, Main } from "./style";
 import { useCalendar, useUpdateColumns } from "../../services/calendar";
 import { moveElement } from "../../utils";
+import { ErrorMessage, LoadingIndicator } from "../../components";
 
 function HomePage() {
   const { tickets, columns, isLoading, error } = useCalendar();
@@ -64,25 +65,21 @@ function HomePage() {
     });
   }
 
-  if (isLoading) {
-    return <p>loading calendar...</p>;
-  }
-
-  if (error) {
-    return <p style={{ color: "red" }}>{error.message}</p>;
-  }
-
   return (
     <StyledApp>
-      <DragDropContext onDragEnd={e => handleDragEnd(e)}>
-        <Container>
-          <Dock tickets={tickets} columns={columns} />
-          <Main>
-            <ToolBar />
-            <Calender tickets={tickets} columns={columns} />
-          </Main>
-        </Container>
-      </DragDropContext>
+      <ErrorMessage error={error && new Error("Failed to fetch calendar")}>
+        <LoadingIndicator loading={isLoading} text="loading calendar">
+          <DragDropContext onDragEnd={e => handleDragEnd(e)}>
+            <Container>
+              <Dock tickets={tickets} columns={columns} />
+              <Main>
+                <ToolBar />
+                <Calender tickets={tickets} columns={columns} />
+              </Main>
+            </Container>
+          </DragDropContext>
+        </LoadingIndicator>
+      </ErrorMessage>
     </StyledApp>
   );
 }

@@ -25,6 +25,12 @@
   --color-grey-text: #4b4b4b;
   --color-yellow-background: #ffe06e;
   --color-yellow-text: #ca7702;
+
+  --color-error-background: #ffc2c1;
+  --color-error-text: #ea2b2b;
+
+  --color-success-background: #def0a5;
+  --color-success-text: #769c00;
 }
 
 [data-theme="dark"] {

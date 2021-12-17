@@ -4,6 +4,9 @@ export const StyledApp = styled.div`
   overflow: hidden;
   height: 100vh;
   background: var(--color-background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Container = styled.div`

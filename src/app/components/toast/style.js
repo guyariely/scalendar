@@ -23,6 +23,14 @@ export const StyledToast = styled(ToastContainer)`
     margin-bottom: 0;
   }
 
-  ${themedToast({ theme: "success", bgColor: "#def0a5", textColor: "#769c00" })}
-  ${themedToast({ theme: "error", bgColor: "#ffc2c1", textColor: "#ea2b2b" })}
+  ${themedToast({
+    theme: "success",
+    bgColor: "var(--color-success-background)",
+    textColor: "var(--color-success-text)",
+  })}
+  ${themedToast({
+    theme: "error",
+    bgColor: "var( --color-error-background)",
+    textColor: "var(--color-error-text)",
+  })}
 `;
