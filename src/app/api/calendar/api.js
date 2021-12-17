@@ -1,6 +1,6 @@
 import { CLEARED_COLUMNS } from "../../consts/initial-data";
 import { FieldValue } from "../../firebase";
-import * as userApi from "../user-api";
+import userApi from "../user";
 
 const calenarApi = {
   async getCalendar(userId) {

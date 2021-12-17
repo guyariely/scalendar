@@ -1,6 +1,6 @@
 import to from "await-to-js";
 import * as firebase from "../../firebase";
-import * as userApi from "../user-api";
+import userApi from "../../api/user";
 
 const authApi = {
   async signIn(email, password) {

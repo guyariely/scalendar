@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import ClickOutsideWrapper from "react-click-outside-wrapper";
-import EditableDescription from "../editable-description";
+import EditableDescription from "./editable-description";
+import Tags from "./tags";
 import { StyledTicket, Container, MainContainer, DeleteButton } from "./style";
 import { Draggable } from "react-beautiful-dnd";
-import Tags from "../tags";
-import { useDeleteTicket, useUpdateTicket } from "../../services/calendar";
+import { useDeleteTicket, useUpdateTicket } from "../../api/calendar";
 
 function Ticket({ ticket, ticketIndex, column }) {
   const { id, theme, tags } = ticket;

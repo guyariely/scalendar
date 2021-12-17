@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSignUp } from "../../services/auth";
+import { useSignUp } from "../../api/auth";
 import {
   SignInForm,
   StyledButton,

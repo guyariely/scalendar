@@ -1,10 +1,10 @@
 import React from "react";
-import Dock from "../../components/dock";
-import Calender from "../../components/calender";
-import ToolBar from "../../components/toolbar";
+import Dock from "../../features/dock";
+import Calender from "../../features/calender";
+import ToolBar from "../../features/toolbar";
 import { DragDropContext } from "react-beautiful-dnd";
 import { StyledApp, Container, Main } from "./style";
-import { useCalendar, useUpdateColumns } from "../../services/calendar";
+import { useCalendar, useUpdateColumns } from "../../api/calendar";
 import { moveElement } from "../../utils";
 import { ErrorMessage, LoadingIndicator } from "../../components";
 

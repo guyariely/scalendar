@@ -9,7 +9,7 @@ import {
   Container,
 } from "./style";
 import { Link } from "react-router-dom";
-import { useSignIn } from "../../services/auth";
+import { useSignIn } from "../../api/auth";
 
 function SignInPage() {
   const [email, setEmail] = useState("");

@@ -1,11 +1,11 @@
 import React from "react";
 import { useTheme } from "../../hooks";
-import NewTicketForm from "../new-ticket-form";
+import NewTicketForm from "./new-ticket-form";
 import { StyledToolbar, ToggleThemeButton, Button } from "./style";
-import authApi from "../../services/auth";
+import authApi from "../../api/auth";
 import { extractParams, getColumnFromParam, randomColor } from "../../utils";
 import uniqid from "uniqid";
-import { useAddTicket, useClearTickets } from "../../services/calendar";
+import { useAddTicket, useClearTickets } from "../../api/calendar";
 
 function ToolBar() {
   const clearTickets = useClearTickets();

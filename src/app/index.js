@@ -1,33 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useUser } from "./context/user";
-import { Routes, Route } from "react-router-dom";
-import { SignInPage, SignUpPage, HomePage } from "./pages";
-
-function UnauthenticatedApp() {
-  return (
-    <Routes>
-      <Route path="/" element={<SignInPage />} />
-      <Route path="/sign-up" element={<SignUpPage />} />
-    </Routes>
-  );
-}
-
-function AuthenticatedApp() {
-  return (
-    <Routes>
-      <Route path="*" element={<HomePage />} />
-    </Routes>
-  );
-}
+import { useResetBrowserHistory } from "./hooks";
+import { ProtectedRouter, PublicRouter } from "./routes";
 
 function App() {
   const user = useUser();
 
-  useEffect(() => {
-    window.history.replaceState(null, null, "/");
-  }, [user]);
+  useResetBrowserHistory([user]);
 
-  return user ? <AuthenticatedApp /> : <UnauthenticatedApp />;
+  return user ? <ProtectedRouter /> : <PublicRouter />;
 }
 
 export default App;

@@ -1,5 +1,5 @@
 import React from "react";
-import Day from "../day";
+import Day from "./day";
 import { StyledCalendar } from "./style";
 import { DAYS } from "./consts";
 
